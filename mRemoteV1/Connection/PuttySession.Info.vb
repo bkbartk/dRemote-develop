@@ -34,10 +34,10 @@ Namespace Connection
             <Browsable(False)> _
             Public Property RootPuttySessionsInfo() As Root.PuttySessions.Info
 
-            <[ReadOnly](True)> _
+            <[ReadOnly](True),
+            Browsable(False)>
             Public Overrides Property PuttySession() As String
 
-            <[ReadOnly](True)> _
             Public Overrides Property Name() As String
 
             <[ReadOnly](True), _
@@ -66,20 +66,17 @@ Namespace Connection
                 End Set
             End Property
 
-            <[ReadOnly](True)> _
             Public Overrides Property Hostname() As String
 
-            <[ReadOnly](True)> _
             Public Overrides Property Username() As String
 
             <[ReadOnly](True), _
             Browsable(False)> _
             Public Overrides Property Password() As String
 
-            <[ReadOnly](True)> _
+            <[ReadOnly](True)>
             Public Overrides Property Protocol() As Protocol.Protocols
 
-            <[ReadOnly](True)> _
             Public Overrides Property Port() As Integer
 
             <[ReadOnly](True), _

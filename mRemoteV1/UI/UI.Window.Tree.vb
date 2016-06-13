@@ -197,7 +197,11 @@ Namespace UI
                         If Settings.SingleClickOnConnectionOpensIt And _
                             (dRemote.Tree.Node.GetNodeType(e.Node) = dRemote.Tree.Node.Type.Connection Or _
                              dRemote.Tree.Node.GetNodeType(e.Node) = dRemote.Tree.Node.Type.PuttySession) Then
-                            OpenConnection(tvConnections)
+                            If My.Settings.Beta Then
+                                OpenConnectionV2(tvConnections, sender)
+                            Else
+                                OpenConnection(tvConnections)
+                            End If
                         End If
 
                         If Settings.SingleClickSwitchesToOpenConnection And dRemote.Tree.Node.GetNodeType(e.Node) = dRemote.Tree.Node.Type.Connection Then

@@ -826,7 +826,6 @@
     <Content Include="References\Skybound.Gecko.dll" />
     <Content Include="References\Tamir.SharpSSH.dll" />
     <Content Include="References\VncSharpNG.dll" />
-    <Content Include="References\VncSharpNG.pdb" />
     <Content Include="References\WeifenLuo.WinFormsUI.Docking.dll" />
     <Content Include="Resources\Icons\dRemote.ico" />
     <Content Include="Resources\Icons\RDCMan_Icon.ico" />

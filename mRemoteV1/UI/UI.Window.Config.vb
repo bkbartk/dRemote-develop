@@ -679,8 +679,24 @@ Namespace UI
                     End If
 
                     Me.ShowHideGridItems()
-                    'App.Runtime.SaveConnectionsBG()
-                    App.Runtime.SaveConnections()
+                    If TypeOf Me.pGrid.SelectedObject Is dRemote.Connection.PuttySession.Info Then
+                        Dim regpro As New dRemote.Config.Putty.RegistryProvider
+                        Dim SessionName As String = s.selectedgriditem.parent.parent.children(0).children(0).value
+                        Dim Value As String = e.ChangedItem.Value
+                        Select Case e.ChangedItem.PropertyDescriptor.Name
+                            Case "Name"
+                                regpro.Rename(e.OldValue, Value)
+                            Case "Port"
+                                regpro.SaveSetting(SessionName, "PortNumber", Value)
+                            Case Else
+                                regpro.SaveSetting(SessionName, e.ChangedItem.PropertyDescriptor.Name, Value)
+                                'Windows.treeForm.tvConnections.SelectedNode.Text = pGrid.SelectedObject.Name
+                        End Select
+
+                    Else
+                        App.Runtime.SaveConnections()
+                    End If
+
                 Catch ex As Exception
                     MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, My.Language.strConfigPropertyGridValueFailed & vbNewLine & ex.Message, True)
                 End Try
@@ -1580,6 +1596,9 @@ Namespace UI
                 pGrid.HelpVisible = propertyGridContextMenuShowHelpText.Checked
             End Sub
 
+            Private Sub pGrid_Click(sender As Object, e As EventArgs) Handles pGrid.Click
+
+            End Sub
         End Class
     End Namespace
 End Namespace

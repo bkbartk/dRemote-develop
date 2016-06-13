@@ -42,6 +42,56 @@ Namespace Config.Putty
             sessionsKey.DeleteSubKey(name)
             Return True
         End Function
+        Public Function Rename(ByVal SessionName As String, ByVal Value As String) As Boolean
+            Dim sessionsKey As RegistryKey = Registry.CurrentUser.OpenSubKey(PuttySessionsKey, True)
+            If sessionsKey Is Nothing Then Return False
+            RenameSubKey(sessionsKey, SessionName, Value)
+            Return True
+        End Function
+
+        Public Function RenameSubKey(parentKey As RegistryKey, subKeyName As String, newSubKeyName As String) As Boolean
+            CopyKey(parentKey, subKeyName, newSubKeyName)
+            parentKey.DeleteSubKeyTree(subKeyName)
+            Return True
+        End Function
+
+        ''' <summary>
+        ''' Copy a registry key.  The parentKey must be writeable.
+        ''' </summary>
+        ''' <param name="parentKey"></param>
+        ''' <param name="keyNameToCopy"></param>
+        ''' <param name="newKeyName"></param>
+        ''' <returns></returns>
+        Public Function CopyKey(parentKey As RegistryKey, keyNameToCopy As String, newKeyName As String) As Boolean
+            'Create new key
+            Dim destinationKey As RegistryKey = parentKey.CreateSubKey(newKeyName)
+
+            'Open the sourceKey we are copying from
+            Dim sourceKey As RegistryKey = parentKey.OpenSubKey(keyNameToCopy)
+
+            RecurseCopyKey(sourceKey, destinationKey)
+
+            Return True
+        End Function
+
+        Private Sub RecurseCopyKey(sourceKey As RegistryKey, destinationKey As RegistryKey)
+            'copy all the values
+            For Each valueName As String In sourceKey.GetValueNames()
+                Dim objValue As Object = sourceKey.GetValue(valueName)
+                Dim valKind As RegistryValueKind = sourceKey.GetValueKind(valueName)
+                destinationKey.SetValue(valueName, objValue, valKind)
+            Next
+
+            'For Each subKey 
+            'Create a new subKey in destinationKey 
+            'Call myself 
+            For Each sourceSubKeyName As String In sourceKey.GetSubKeyNames()
+                Dim sourceSubKey As RegistryKey = sourceKey.OpenSubKey(sourceSubKeyName)
+                Dim destSubKey As RegistryKey = destinationKey.CreateSubKey(sourceSubKeyName)
+                RecurseCopyKey(sourceSubKey, destSubKey)
+            Next
+        End Sub
+
         Public Function SaveSetting(ByVal SessionName As String, ByVal KeyName As String, ByVal Value As String) As Boolean
             Dim sessionsKey As RegistryKey = Registry.CurrentUser.OpenSubKey(PuttySessionsKey & "\" & SessionName, True)
             If sessionsKey Is Nothing Then Return False
