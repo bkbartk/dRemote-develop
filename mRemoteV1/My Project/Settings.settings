@@ -74,9 +74,6 @@
     <Setting Name="DefaultDomain" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="WriteLogFile" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="UseCustomPuttyPath" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>

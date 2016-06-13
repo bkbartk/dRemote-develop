@@ -287,6 +287,7 @@ Public Class frmMainV2
     End Sub
     Sub resetLayout()
         QuickConnectWindow.Hide()
+        Windows.errorsForm.Hide()
         Windows.treeForm.Show(DockPanel1, DockState.DockLeft)
         Windows.configForm.Show(DockPanel1)
         Windows.configForm.DockTo(Windows.treeForm.Pane, DockStyle.Bottom, -1)
@@ -317,6 +318,7 @@ Public Class frmMainV2
         mMenViewConnections.Checked = Not Windows.treeForm.IsHidden
         mMenViewConfig.Checked = Not Windows.configForm.IsHidden
         mMenViewQuickConnectToolbar.Checked = Not QuickConnectWindow.IsHidden
+        mMenViewErrorsAndInfos.Checked = Not Windows.errorsForm.IsHidden
     End Sub
 
     Private Sub mMenToolsSSHTransfer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mMenToolsSSHTransfer.Click
@@ -349,12 +351,13 @@ Public Class frmMainV2
         End If
     End Sub
 
-    Private Sub DockPanel1_ActiveContentChanged(sender As Object, e As EventArgs) Handles DockPanel1.ActiveContentChanged
-
-    End Sub
-
-    Private Sub mainMenu_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles mainMenu.Opening
-
+    Private Sub mMenViewErrorsAndInfos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mMenViewErrorsAndInfos.Click
+        mMenViewErrorsAndInfos.Checked = Not mMenViewErrorsAndInfos.Checked
+        If mMenViewErrorsAndInfos.Checked Then
+            Windows.errorsForm.Show(DockPanel1, DockState.DockBottomAutoHide)
+        Else
+            Windows.errorsForm.Hide()
+        End If
     End Sub
 End Class
 

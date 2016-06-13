@@ -24,7 +24,6 @@
         <System.Diagnostics.DebuggerStepThrough()>
         Private Sub InitializeComponent()
             Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AdvancedPage))
-            Me.chkWriteLogFile = New System.Windows.Forms.CheckBox()
             Me.chkAutomaticallyGetSessionInfo = New System.Windows.Forms.CheckBox()
             Me.lblXulRunnerPath = New System.Windows.Forms.Label()
             Me.lblMaximumPuttyWaitTime = New System.Windows.Forms.Label()
@@ -46,16 +45,6 @@
             CType(Me.numPuttyWaitTime, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.numUVNCSCPort, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
-            '
-            'chkWriteLogFile
-            '
-            Me.chkWriteLogFile.AutoSize = True
-            Me.chkWriteLogFile.Location = New System.Drawing.Point(3, 0)
-            Me.chkWriteLogFile.Name = "chkWriteLogFile"
-            Me.chkWriteLogFile.Size = New System.Drawing.Size(153, 17)
-            Me.chkWriteLogFile.TabIndex = 17
-            Me.chkWriteLogFile.Text = "Write log file (dRemote.log)"
-            Me.chkWriteLogFile.UseVisualStyleBackColor = True
             '
             'chkAutomaticallyGetSessionInfo
             '
@@ -234,7 +223,6 @@
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
             Me.Controls.Add(Me.lblExtraPuttyParameters)
             Me.Controls.Add(Me.txtExtraPuttyParameters)
-            Me.Controls.Add(Me.chkWriteLogFile)
             Me.Controls.Add(Me.chkAutomaticallyGetSessionInfo)
             Me.Controls.Add(Me.lblXulRunnerPath)
             Me.Controls.Add(Me.lblMaximumPuttyWaitTime)
@@ -260,7 +248,6 @@
             Me.PerformLayout()
 
         End Sub
-        Friend WithEvents chkWriteLogFile As System.Windows.Forms.CheckBox
         Friend WithEvents chkAutomaticallyGetSessionInfo As System.Windows.Forms.CheckBox
         Friend WithEvents lblXulRunnerPath As System.Windows.Forms.Label
         Friend WithEvents lblMaximumPuttyWaitTime As System.Windows.Forms.Label

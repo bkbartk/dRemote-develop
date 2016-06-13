@@ -176,7 +176,9 @@ Namespace UI
 
                     Windows.configForm.pGrid_SelectedObjectChanged()
                     ShowHideTreeContextMenuItems(e.Node)
-                    Windows.sessionsForm.GetSessions(True)
+                    If Not IsNothing(Windows.sessionsForm) Then
+                        Windows.sessionsForm.GetSessions(True)
+                    End If
 
                     LastSelected = dRemote.Tree.Node.GetConstantID(e.Node)
                 Catch ex As Exception

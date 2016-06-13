@@ -39,7 +39,7 @@ Namespace UI
                 'pnlErrorMsg
                 '
                 Me.pnlErrorMsg.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
                 Me.pnlErrorMsg.BackColor = System.Drawing.SystemColors.Control
                 Me.pnlErrorMsg.Controls.Add(Me.txtMsgText)
                 Me.pnlErrorMsg.Controls.Add(Me.lblMsgDate)
@@ -52,8 +52,8 @@ Namespace UI
                 'txtMsgText
                 '
                 Me.txtMsgText.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
                 Me.txtMsgText.BorderStyle = System.Windows.Forms.BorderStyle.None
                 Me.txtMsgText.Location = New System.Drawing.Point(40, 20)
                 Me.txtMsgText.Multiline = True
@@ -66,7 +66,7 @@ Namespace UI
                 'lblMsgDate
                 '
                 Me.lblMsgDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
                 Me.lblMsgDate.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
                 Me.lblMsgDate.Location = New System.Drawing.Point(40, 5)
                 Me.lblMsgDate.Name = "lblMsgDate"
@@ -85,8 +85,8 @@ Namespace UI
                 'lvErrorCollector
                 '
                 Me.lvErrorCollector.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
                 Me.lvErrorCollector.BorderStyle = System.Windows.Forms.BorderStyle.None
                 Me.lvErrorCollector.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.clmMessage})
                 Me.lvErrorCollector.ContextMenuStrip = Me.cMenMC
@@ -113,14 +113,14 @@ Namespace UI
                 Me.cMenMC.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cMenMCCopy, Me.cMenMCDelete})
                 Me.cMenMC.Name = "cMenMC"
                 Me.cMenMC.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-                Me.cMenMC.Size = New System.Drawing.Size(153, 70)
+                Me.cMenMC.Size = New System.Drawing.Size(138, 48)
                 '
                 'cMenMCCopy
                 '
                 Me.cMenMCCopy.Image = Global.dRemote.My.Resources.Resources.Copy
                 Me.cMenMCCopy.Name = "cMenMCCopy"
                 Me.cMenMCCopy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-                Me.cMenMCCopy.Size = New System.Drawing.Size(152, 22)
+                Me.cMenMCCopy.Size = New System.Drawing.Size(137, 22)
                 Me.cMenMCCopy.Text = Global.dRemote.My.Language.strMenuCopy
                 '
                 'cMenMCDelete
@@ -128,7 +128,7 @@ Namespace UI
                 Me.cMenMCDelete.Image = Global.dRemote.My.Resources.Resources.Delete
                 Me.cMenMCDelete.Name = "cMenMCDelete"
                 Me.cMenMCDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete
-                Me.cMenMCDelete.Size = New System.Drawing.Size(152, 22)
+                Me.cMenMCDelete.Size = New System.Drawing.Size(137, 22)
                 Me.cMenMCDelete.Text = Global.dRemote.My.Language.strMenuDelete
                 '
                 'imgListMC
@@ -153,7 +153,6 @@ Namespace UI
                 CType(Me.pbError, System.ComponentModel.ISupportInitialize).EndInit()
                 Me.cMenMC.ResumeLayout(False)
                 Me.ResumeLayout(False)
-
 
             End Sub
 #End Region
@@ -403,6 +402,7 @@ Namespace UI
                 Vertical = 0
                 Horizontal = 1
             End Enum
+
         End Class
     End Namespace
 End Namespace

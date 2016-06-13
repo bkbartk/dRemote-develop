@@ -47,8 +47,8 @@ Namespace UI
                 'pGrid
                 '
                 Me.pGrid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
                 Me.pGrid.BrowsableProperties = Nothing
                 Me.pGrid.ContextMenuStrip = Me.propertyGridContextMenu
                 Me.pGrid.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -65,23 +65,23 @@ Namespace UI
                 '
                 Me.propertyGridContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.propertyGridContextMenuReset, Me.ToolStripSeparator1, Me.propertyGridContextMenuShowHelpText})
                 Me.propertyGridContextMenu.Name = "propertyGridContextMenu"
-                Me.propertyGridContextMenu.Size = New System.Drawing.Size(157, 76)
+                Me.propertyGridContextMenu.Size = New System.Drawing.Size(156, 54)
                 '
                 'propertyGridContextMenuReset
                 '
                 Me.propertyGridContextMenuReset.Name = "propertyGridContextMenuReset"
-                Me.propertyGridContextMenuReset.Size = New System.Drawing.Size(156, 22)
+                Me.propertyGridContextMenuReset.Size = New System.Drawing.Size(155, 22)
                 Me.propertyGridContextMenuReset.Text = "&Reset"
                 '
                 'ToolStripSeparator1
                 '
                 Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-                Me.ToolStripSeparator1.Size = New System.Drawing.Size(153, 6)
+                Me.ToolStripSeparator1.Size = New System.Drawing.Size(152, 6)
                 '
                 'propertyGridContextMenuShowHelpText
                 '
                 Me.propertyGridContextMenuShowHelpText.Name = "propertyGridContextMenuShowHelpText"
-                Me.propertyGridContextMenuShowHelpText.Size = New System.Drawing.Size(156, 22)
+                Me.propertyGridContextMenuShowHelpText.Size = New System.Drawing.Size(155, 22)
                 Me.propertyGridContextMenuShowHelpText.Text = "&Show Help Text"
                 '
                 'btnShowInheritance
@@ -727,7 +727,7 @@ Namespace UI
                                     strHide.Add("RDGatewayPassword")
                                     strHide.Add("RDGatewayUsername")
                                 End If
-                                If Not (conI.Resolution = RDP.RDPResolutions.FitToWindow Or _
+                                If Not (conI.Resolution = RDP.RDPResolutions.FitToWindow Or
                                         conI.Resolution = RDP.RDPResolutions.Fullscreen) Then
                                     strHide.Add("AutomaticResize")
                                 End If
@@ -902,7 +902,7 @@ Namespace UI
                                 strHide.Add("Domain")
                                 strHide.Add("ExtApp")
                                 strHide.Add("ICAEncryption")
-                                strHide.Add("Password")
+                                'strHide.Add("Password")
                                 strHide.Add("RDGatewayDomain")
                                 strHide.Add("RDGatewayHostname")
                                 strHide.Add("RDGatewayPassword")
@@ -922,7 +922,7 @@ Namespace UI
                                 strHide.Add("AutomaticResize")
                                 strHide.Add("UseConsoleSession")
                                 strHide.Add("UseCredSsp")
-                                strHide.Add("Username")
+                                'strHide.Add("Username")
                                 strHide.Add("VNCAuthMode")
                                 strHide.Add("VNCColors")
                                 strHide.Add("VNCCompression")
@@ -944,7 +944,7 @@ Namespace UI
                                 strHide.Add("Domain")
                                 strHide.Add("ExtApp")
                                 strHide.Add("ICAEncryption")
-                                strHide.Add("Password")
+                                'strHide.Add("Password")
                                 strHide.Add("RDGatewayDomain")
                                 strHide.Add("RDGatewayHostname")
                                 strHide.Add("RDGatewayPassword")
@@ -964,7 +964,7 @@ Namespace UI
                                 strHide.Add("AutomaticResize")
                                 strHide.Add("UseConsoleSession")
                                 strHide.Add("UseCredSsp")
-                                strHide.Add("Username")
+                                'strHide.Add("Username")
                                 strHide.Add("VNCAuthMode")
                                 strHide.Add("VNCColors")
                                 strHide.Add("VNCCompression")
@@ -1425,8 +1425,7 @@ Namespace UI
 
             Private Sub btnIcon_Click(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles btnIcon.MouseUp
                 Try
-                    If TypeOf pGrid.SelectedObject Is dRemote.Connection.Info And _
-                       Not TypeOf pGrid.SelectedObject Is dRemote.Connection.PuttySession.Info Then
+                    If TypeOf pGrid.SelectedObject Is dRemote.Connection.Info And Not TypeOf pGrid.SelectedObject Is dRemote.Connection.PuttySession.Info Then
                         Me.cMenIcons.Items.Clear()
 
                         For Each iStr As String In dRemote.Connection.Icon.Icons
@@ -1549,9 +1548,9 @@ Namespace UI
                 Try
                     propertyGridContextMenuShowHelpText.Checked = Settings.ShowConfigHelpText
                     Dim gridItem As GridItem = pGrid.SelectedGridItem
-                    propertyGridContextMenuReset.Enabled = (pGrid.SelectedObject IsNot Nothing AndAlso _
-                                                            gridItem IsNot Nothing AndAlso _
-                                                            gridItem.PropertyDescriptor IsNot Nothing AndAlso _
+                    propertyGridContextMenuReset.Enabled = (pGrid.SelectedObject IsNot Nothing AndAlso
+                                                            gridItem IsNot Nothing AndAlso
+                                                            gridItem.PropertyDescriptor IsNot Nothing AndAlso
                                                             gridItem.PropertyDescriptor.CanResetValue(pGrid.SelectedObject))
                 Catch ex As Exception
                     MessageCollector.AddExceptionMessage("UI.Window.Config.propertyGridContextMenu_Opening() failed.", ex, MessageClass.ErrorMsg, True)
@@ -1561,9 +1560,9 @@ Namespace UI
             Private Sub propertyGridContextMenuReset_Click(sender As System.Object, e As EventArgs) Handles propertyGridContextMenuReset.Click
                 Try
                     Dim gridItem As GridItem = pGrid.SelectedGridItem
-                    If pGrid.SelectedObject IsNot Nothing AndAlso _
-                            gridItem IsNot Nothing AndAlso _
-                            gridItem.PropertyDescriptor IsNot Nothing AndAlso _
+                    If pGrid.SelectedObject IsNot Nothing AndAlso
+                            gridItem IsNot Nothing AndAlso
+                            gridItem.PropertyDescriptor IsNot Nothing AndAlso
                             gridItem.PropertyDescriptor.CanResetValue(pGrid.SelectedObject) Then
                         pGrid.ResetSelectedProperty()
                     End If
@@ -1580,6 +1579,7 @@ Namespace UI
                 Settings.ShowConfigHelpText = propertyGridContextMenuShowHelpText.Checked
                 pGrid.HelpVisible = propertyGridContextMenuShowHelpText.Checked
             End Sub
+
         End Class
     End Namespace
 End Namespace

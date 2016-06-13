@@ -368,19 +368,6 @@ Namespace My
          Global.System.Configuration.SettingsProviderAttribute(GetType(dRemote.Config.Settings.Providers.ChooseProvider)),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property WriteLogFile() As Boolean
-            Get
-                Return CType(Me("WriteLogFile"),Boolean)
-            End Get
-            Set
-                Me("WriteLogFile") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Configuration.SettingsProviderAttribute(GetType(dRemote.Config.Settings.Providers.ChooseProvider)),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
         Public Property UseCustomPuttyPath() As Boolean
             Get
                 Return CType(Me("UseCustomPuttyPath"),Boolean)

@@ -136,7 +136,10 @@ Namespace Connection
             Public Overrides Function Connect() As Boolean
                 _loginComplete = False
                 SetEventHandlers()
-
+                If _rdpClient.Server = "" Then
+                    MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, My.Language.strConnectionOpenFailedNoHostname)
+                    Return False
+                End If
                 Try
                     _rdpClient.Connect()
                     MyBase.Connect()

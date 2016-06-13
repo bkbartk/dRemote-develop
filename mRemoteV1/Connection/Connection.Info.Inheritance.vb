@@ -88,10 +88,10 @@ Namespace Connection
                 TypeConverter(GetType(Tools.Misc.YesNoTypeConverter))> _
             Public Property Port() As Boolean = My.Settings.InhDefaultPort
 
-            <LocalizedCategory("strCategoryProtocol", 4), _
-                LocalizedDisplayNameInheritAttribute("strPropertyNamePuttySession"), _
-                LocalizedDescriptionInheritAttribute("strPropertyDescriptionPuttySession"), _
-                TypeConverter(GetType(Tools.Misc.YesNoTypeConverter))> _
+            <LocalizedCategory("strCategoryProtocol", 4),
+                LocalizedDisplayNameInheritAttribute("strPropertyNamePuttySession"),
+                LocalizedDescriptionInheritAttribute("strPropertyDescriptionPuttySession"),
+                TypeConverter(GetType(Tools.Misc.YesNoTypeConverter))>
             Public Property PuttySession() As Boolean = My.Settings.InhDefaultPuttySession
 
             <LocalizedCategory("strCategoryProtocol", 4), _
@@ -346,7 +346,7 @@ Namespace Connection
             Public Property VNCViewOnly() As Boolean = My.Settings.InhDefaultVNCViewOnly
 #End Region
 
-            <Browsable(False)> _
+            <Browsable(False)>
             Public Property Parent() As Object
 
             <Browsable(False)> _

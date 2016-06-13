@@ -46,9 +46,9 @@ Namespace Messages
 
             If My.Settings.SwitchToMCOnInformation And nMsg.MsgClass = Messages.MessageClass.InformationMsg Then
                 Debug.Print("Info: " & nMsg.MsgText)
-                If My.Settings.WriteLogFile Then
-                    App.Runtime.Log.Info(nMsg.MsgText)
-                End If
+                'If My.Settings.WriteLogFile Then
+                App.Runtime.Log.Info(nMsg.MsgText)
+                'End If
 
                 If OnlyLog Then
                     Exit Sub
@@ -63,9 +63,9 @@ Namespace Messages
 
             If My.Settings.SwitchToMCOnWarning And nMsg.MsgClass = Messages.MessageClass.WarningMsg Then
                 Debug.Print("Warning: " & nMsg.MsgText)
-                If My.Settings.WriteLogFile Then
-                    App.Runtime.Log.Warn(nMsg.MsgText)
-                End If
+                'If My.Settings.WriteLogFile Then
+                App.Runtime.Log.Warn(nMsg.MsgText)
+                'End If
 
                 If OnlyLog Then
                     Exit Sub
@@ -98,9 +98,9 @@ Namespace Messages
             If nMsg.MsgClass = MessageClass.ReportMsg Then
                 Debug.Print("Report: " & nMsg.MsgText)
 
-                If My.Settings.WriteLogFile Then
-                    App.Runtime.Log.Info(nMsg.MsgText)
-                End If
+                'If My.Settings.WriteLogFile Then
+                App.Runtime.Log.Info(nMsg.MsgText)
+                'End If
 
                 Exit Sub
             End If

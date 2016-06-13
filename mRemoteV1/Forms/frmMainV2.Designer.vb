@@ -41,6 +41,7 @@ Partial Class frmMainV2
         Me.btnAmout = New System.Windows.Forms.ToolStripMenuItem()
         Me.DockPanel1 = New WeifenLuo.WinFormsUI.Docking.DockPanel()
         Me.VS2013BlueTheme2 = New WeifenLuo.WinFormsUI.Docking.VS2013BlueTheme()
+        Me.mMenViewErrorsAndInfos = New System.Windows.Forms.ToolStripMenuItem()
         Me.mainMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -91,7 +92,7 @@ Partial Class frmMainV2
         '
         'cMenLayout
         '
-        Me.cMenLayout.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mMenViewResetLayout, Me.mMenViewConnections, Me.mMenViewConfig, Me.mMenViewQuickConnectToolbar})
+        Me.cMenLayout.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mMenViewResetLayout, Me.mMenViewConnections, Me.mMenViewConfig, Me.mMenViewQuickConnectToolbar, Me.mMenViewErrorsAndInfos})
         Me.cMenLayout.Image = Global.dRemote.My.Resources.Resources.Panels
         Me.cMenLayout.Name = "cMenLayout"
         Me.cMenLayout.Size = New System.Drawing.Size(171, 22)
@@ -166,6 +167,15 @@ Partial Class frmMainV2
         Me.DockPanel1.TabIndex = 0
         Me.DockPanel1.Theme = Me.VS2013BlueTheme2
         '
+        'mMenViewErrorsAndInfos
+        '
+        Me.mMenViewErrorsAndInfos.Checked = True
+        Me.mMenViewErrorsAndInfos.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.mMenViewErrorsAndInfos.Image = Global.dRemote.My.Resources.Resources.ErrorsAndInfos
+        Me.mMenViewErrorsAndInfos.Name = "mMenViewErrorsAndInfos"
+        Me.mMenViewErrorsAndInfos.Size = New System.Drawing.Size(196, 22)
+        Me.mMenViewErrorsAndInfos.Text = "Errors and Infos"
+        '
         'frmMainV2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -200,4 +210,5 @@ Partial Class frmMainV2
     Friend WithEvents mMenToolsExternalApps As ToolStripMenuItem
     Friend WithEvents mMenToolsSSHTransfer As ToolStripMenuItem
     Friend WithEvents mMenViewQuickConnectToolbar As ToolStripMenuItem
+    Friend WithEvents mMenViewErrorsAndInfos As ToolStripMenuItem
 End Class

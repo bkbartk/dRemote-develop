@@ -6762,15 +6762,6 @@ Namespace My
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to Write log file (dRemote.log).
-        '''</summary>
-        Friend Shared ReadOnly Property strWriteLogFile() As String
-            Get
-                Return ResourceManager.GetString("strWriteLogFile", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Looks up a localized string similar to XULrunner path:.
         '''</summary>
         Friend Shared ReadOnly Property strXULrunnerPath() As String

@@ -548,7 +548,7 @@ Partial Class frmMain
         '
         'mMenInfoAbout
         '
-        Me.mMenInfoAbout.Image = Global.dRemote.My.Resources.Resources.mRemote
+        Me.mMenInfoAbout.Image = CType(resources.GetObject("mMenInfoAbout.Image"), System.Drawing.Image)
         Me.mMenInfoAbout.Name = "mMenInfoAbout"
         Me.mMenInfoAbout.Size = New System.Drawing.Size(171, 22)
         Me.mMenInfoAbout.Text = "About dRemote"
@@ -620,7 +620,7 @@ Partial Class frmMain
         Me.tsQuickConnect.Location = New System.Drawing.Point(3, 24)
         Me.tsQuickConnect.MaximumSize = New System.Drawing.Size(0, 25)
         Me.tsQuickConnect.Name = "tsQuickConnect"
-        Me.tsQuickConnect.Size = New System.Drawing.Size(418, 25)
+        Me.tsQuickConnect.Size = New System.Drawing.Size(387, 25)
         Me.tsQuickConnect.TabIndex = 18
         '
         'btnQuickConnect

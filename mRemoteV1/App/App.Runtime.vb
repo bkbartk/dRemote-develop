@@ -473,9 +473,9 @@ Namespace App
 
                 Log = LogManager.GetLogger("Logger")
 
-                If My.Settings.WriteLogFile Then
+                'If My.Settings.WriteLogFile Then
 #If Not PORTABLE Then
-                    Log.InfoFormat("{0} {1} starting.", Application.ProductName, Application.ProductVersion)
+                Log.InfoFormat("{0} {1} starting.", Application.ProductName, Application.ProductVersion)
 #Else
                     Log.InfoFormat("{0} {1} {2} starting.", Application.ProductName, Application.ProductVersion, My.Language.strLabelPortableEdition)
 #End If
@@ -507,7 +507,7 @@ Namespace App
 
                     Log.InfoFormat("Microsoft .NET CLR {0}", Version.ToString)
                     Log.InfoFormat("System Culture: {0}/{1}", Thread.CurrentThread.CurrentUICulture.Name, Thread.CurrentThread.CurrentUICulture.NativeName)
-                End If
+                'End If
             End Sub
 
             Private Shared _appUpdate As Update

@@ -27,7 +27,6 @@ Namespace Forms.OptionsPages
             btnBrowseCustomPuttyPath.Text = Language.strButtonBrowse
             chkUseCustomPuttyPath.Text = Language.strCheckboxPuttyPath
             chkAutomaticallyGetSessionInfo.Text = Language.strAutomaticallyGetSessionInfo
-            chkWriteLogFile.Text = Language.strWriteLogFile
             lblUVNCSCPort.Text = Language.strUltraVNCSCListeningPort
             lblXulRunnerPath.Text = Language.strXULrunnerPath
             btnBrowseXulRunnerPath.Text = Language.strButtonBrowse
@@ -37,7 +36,7 @@ Namespace Forms.OptionsPages
         Public Overrides Sub LoadSettings()
             MyBase.SaveSettings()
 
-            chkWriteLogFile.Checked = My.Settings.WriteLogFile
+            'chkWriteLogFile.Checked = My.Settings.WriteLogFile
             chkEncryptCompleteFile.Checked = My.Settings.EncryptCompleteConnectionsFile
             'chkEncryptPasswords.Checked = My.Settings.EncryptPasswords
             chkAutomaticallyGetSessionInfo.Checked = My.Settings.AutomaticallyGetSessionInfo
@@ -57,7 +56,7 @@ Namespace Forms.OptionsPages
         Public Overrides Sub SaveSettings()
             MyBase.SaveSettings()
 
-            My.Settings.WriteLogFile = chkWriteLogFile.Checked
+            'My.Settings.WriteLogFile = chkWriteLogFile.Checked
             My.Settings.EncryptCompleteConnectionsFile = chkEncryptCompleteFile.Checked
             'My.Settings.EncryptPasswords = chkEncryptPasswords.Checked
             My.Settings.AutomaticallyGetSessionInfo = chkAutomaticallyGetSessionInfo.Checked
