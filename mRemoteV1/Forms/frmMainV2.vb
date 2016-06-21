@@ -157,7 +157,9 @@ Public Class frmMainV2
         Dim url As String = e.Url.ToString
         If url.StartsWith("res://") And Not url.Contains("doubleclick.net") Then
             sender.Hide()
-        ElseIf e.TargetFrameName = "" And Not url.StartsWith(App.Info.General.UrlStart) And url <> "about:blank" And Not url.Contains("doubleclick.net") And url <> "https://www.google.com/pagead/drt/ui" And Not url.Contains("clickserve.dartsearch.net") Then
+        ElseIf e.TargetFrameName = "" And Not url.StartsWith(App.Info.General.UrlStart) And url <> "about:blank" And Not url.Contains("doubleclick.net") And url <> "https://www.google.com/pagead/drt/ui" _
+            And Not url.Contains("clickserve.dartsearch.net") _
+            And Not url.Contains("jsiframe") Then
             Process.Start(url)
             e.Cancel = True
             If Not sender.url.ToString.Contains("dremote") Then
