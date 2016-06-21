@@ -23,6 +23,7 @@ Namespace Config
 #Region "Private Properties"
             Private _xmlTextWriter As XmlTextWriter
             Private _password As String = App.Info.General.EncryptionKeyAES
+            Private EncryptionType As String = ""
 
             Private _sqlConnection As SqlConnection
             Private _sqlQuery As SqlCommand
@@ -268,7 +269,7 @@ Namespace Config
                     End If
 
                     If Me._SaveSecurity.Password = True Then
-                        _sqlQuery.CommandText &= "'" & PrepareValueForDB(Security.Crypt.Encrypt(.Password, _password)) & "',"
+                        _sqlQuery.CommandText &= "'" & PrepareValueForDB(Security.Crypt.Encrypt(.Password, _password, EncryptionType)) & "',"
                     Else
                         _sqlQuery.CommandText &= "'" & "" & "',"
                     End If
@@ -316,7 +317,7 @@ Namespace Config
                     _sqlQuery.CommandText &= "'" & .VNCProxyIP & "',"
                     _sqlQuery.CommandText &= "'" & .VNCProxyPort & "',"
                     _sqlQuery.CommandText &= "'" & .VNCProxyUsername & "',"
-                    _sqlQuery.CommandText &= "'" & Security.Crypt.Encrypt(.VNCProxyPassword, _password) & "',"
+                    _sqlQuery.CommandText &= "'" & Security.Crypt.Encrypt(.VNCProxyPassword, _password, EncryptionType) & "',"
                     _sqlQuery.CommandText &= "'" & .VNCColors.ToString & "',"
                     _sqlQuery.CommandText &= "'" & .VNCSmartSizeMode.ToString & "',"
                     _sqlQuery.CommandText &= "'" & .VNCViewOnly & "',"
@@ -332,7 +333,7 @@ Namespace Config
                     End If
 
                     If Me._SaveSecurity.Password = True Then
-                        _sqlQuery.CommandText &= "'" & Security.Crypt.Encrypt(.RDGatewayPassword, _password) & "',"
+                        _sqlQuery.CommandText &= "'" & Security.Crypt.Encrypt(.RDGatewayPassword, _password, EncryptionType) & "',"
                     Else
                         _sqlQuery.CommandText &= "'" & "" & "',"
                     End If
@@ -490,7 +491,7 @@ Namespace Config
 
                 If Not String.IsNullOrEmpty(fileContents) Then
                     Dim streamWriter As New StreamWriter(ConnectionFileName)
-                    streamWriter.Write(Security.Crypt.Encrypt(fileContents, _password))
+                    streamWriter.Write(Security.Crypt.Encrypt(fileContents, _password, EncryptionType))
                     streamWriter.Close()
                 End If
             End Sub
@@ -521,15 +522,20 @@ Namespace Config
                     _xmlTextWriter.WriteStartElement("Connections") ' Do not localize
                     _xmlTextWriter.WriteAttributeString("Name", "", treeNode.Text)
                     _xmlTextWriter.WriteAttributeString("Export", "", Export)
-                    _xmlTextWriter.WriteAttributeString("Encryption", "", "AES")
+                    EncryptionType = [Enum].GetName(GetType(Tools.Misc.EncryptionENUM), TryCast(treeNode.Tag, Root.Info).Encryption)
+
+                    _xmlTextWriter.WriteAttributeString("Encryption", "", EncryptionType)
+                    If EncryptionType = "MD5" Then
+                        _password = App.Info.General.EncryptionKey
+                    End If
                     If Export Then
-                        _xmlTextWriter.WriteAttributeString("Protected", "", Security.Crypt.Encrypt("ThisIsNotProtected", _password))
+                        _xmlTextWriter.WriteAttributeString("Protected", "", Security.Crypt.Encrypt("ThisIsNotProtected", _password, EncryptionType))
                     Else
                         If TryCast(treeNode.Tag, Root.Info).Password = True Then
                             _password = TryCast(treeNode.Tag, Root.Info).PasswordString
-                            _xmlTextWriter.WriteAttributeString("Protected", "", Security.Crypt.Encrypt("ThisIsProtected", _password))
+                            _xmlTextWriter.WriteAttributeString("Protected", "", Security.Crypt.Encrypt("ThisIsProtected", _password, EncryptionType))
                         Else
-                            _xmlTextWriter.WriteAttributeString("Protected", "", Security.Crypt.Encrypt("ThisIsNotProtected", _password))
+                            _xmlTextWriter.WriteAttributeString("Protected", "", Security.Crypt.Encrypt("ThisIsNotProtected", _password, EncryptionType))
                         End If
                     End If
 
@@ -609,7 +615,7 @@ Namespace Config
                     End If
 
                     If Me._SaveSecurity.Password = True Then
-                        _xmlTextWriter.WriteAttributeString("Password", "", Security.Crypt.Encrypt(curConI.Password, _password))
+                        _xmlTextWriter.WriteAttributeString("Password", "", Security.Crypt.Encrypt(curConI.Password, _password, EncryptionType))
                     Else
                         _xmlTextWriter.WriteAttributeString("Password", "", "")
                     End If
@@ -681,7 +687,7 @@ Namespace Config
                     _xmlTextWriter.WriteAttributeString("VNCProxyIP", "", curConI.VNCProxyIP)
                     _xmlTextWriter.WriteAttributeString("VNCProxyPort", "", curConI.VNCProxyPort)
                     _xmlTextWriter.WriteAttributeString("VNCProxyUsername", "", curConI.VNCProxyUsername)
-                    _xmlTextWriter.WriteAttributeString("VNCProxyPassword", "", Security.Crypt.Encrypt(curConI.VNCProxyPassword, _password))
+                    _xmlTextWriter.WriteAttributeString("VNCProxyPassword", "", Security.Crypt.Encrypt(curConI.VNCProxyPassword, _password, EncryptionType))
                     _xmlTextWriter.WriteAttributeString("VNCColors", "", curConI.VNCColors.ToString)
                     _xmlTextWriter.WriteAttributeString("VNCSmartSizeMode", "", curConI.VNCSmartSizeMode.ToString)
                     _xmlTextWriter.WriteAttributeString("VNCViewOnly", "", curConI.VNCViewOnly)
@@ -698,7 +704,7 @@ Namespace Config
                     End If
 
                     If Me._SaveSecurity.Password = True Then
-                        _xmlTextWriter.WriteAttributeString("RDGatewayPassword", "", Security.Crypt.Encrypt(curConI.RDGatewayPassword, _password))
+                        _xmlTextWriter.WriteAttributeString("RDGatewayPassword", "", Security.Crypt.Encrypt(curConI.RDGatewayPassword, _password, EncryptionType))
                     Else
                         _xmlTextWriter.WriteAttributeString("RDGatewayPassword", "", "")
                     End If

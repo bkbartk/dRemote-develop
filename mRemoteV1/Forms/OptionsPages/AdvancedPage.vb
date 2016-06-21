@@ -36,6 +36,11 @@ Namespace Forms.OptionsPages
         Public Overrides Sub LoadSettings()
             MyBase.SaveSettings()
 
+            Dim tn As TreeNode = App.Runtime.Windows.treeForm.tvConnections.Nodes(0)
+            Dim tg As Root.Info = tn.Tag
+            If tg.Encryption = Misc.EncryptionENUM.MD5 Then
+                chkmRemoteNGCompatible.Checked = My.Settings.mRemoteNGCompatible
+            End If
             'chkWriteLogFile.Checked = My.Settings.WriteLogFile
             chkEncryptCompleteFile.Checked = My.Settings.EncryptCompleteConnectionsFile
             'chkEncryptPasswords.Checked = My.Settings.EncryptPasswords
@@ -55,7 +60,15 @@ Namespace Forms.OptionsPages
 
         Public Overrides Sub SaveSettings()
             MyBase.SaveSettings()
-
+            My.Settings.mRemoteNGCompatible = chkmRemoteNGCompatible.Checked
+            If My.Settings.mRemoteNGCompatible Then
+                Dim tn As TreeNode = App.Runtime.Windows.treeForm.tvConnections.Nodes(0)
+                Dim tg As Root.Info = tn.Tag
+                tg.Encryption = Misc.EncryptionENUM.MD5
+                'If App.Runtime.Windows.treeForm.tvConnections.SelectedNode = tn Then
+                App.Runtime.Windows.treeForm.tvConnections.SelectedNode = App.Runtime.Windows.treeForm.tvConnections.SelectedNode
+                'End If
+            End If
             'My.Settings.WriteLogFile = chkWriteLogFile.Checked
             My.Settings.EncryptCompleteConnectionsFile = chkEncryptCompleteFile.Checked
             'My.Settings.EncryptPasswords = chkEncryptPasswords.Checked
@@ -170,6 +183,7 @@ Namespace Forms.OptionsPages
                 btnLaunchPutty.Enabled = False
             End If
         End Sub
+
 
 
 #End Region

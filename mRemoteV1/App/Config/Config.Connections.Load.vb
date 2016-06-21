@@ -16,7 +16,7 @@ Namespace Config
             Private confVersion As Double
             Private pW As String = App.Info.General.EncryptionKey
             Private PWAES As String = App.Info.General.EncryptionKeyAES
-            Private EncryptionType As String = "MD5"
+            Private EncryptionType As String = ""
 
 
             Private sqlCon As SqlConnection
@@ -165,6 +165,7 @@ Namespace Config
 #Region "SQL"
             Private Delegate Sub LoadFromSqlDelegate()
             Private Sub LoadFromSQL()
+                EncryptionType = "MD5"
                 If Windows.treeForm Is Nothing OrElse Windows.treeForm.tvConnections Is Nothing Then Return
                 If Windows.treeForm.tvConnections.InvokeRequired Then
                     Windows.treeForm.tvConnections.Invoke(New LoadFromSqlDelegate(AddressOf LoadFromSQL))
@@ -224,7 +225,7 @@ Namespace Config
                                 Exit Sub
                             End If
                         End If
-                    ElseIf EncryptionType = "AES" Then
+                    Else 'If EncryptionType = "AES" Then
                         If Security.Crypt.DecryptStringFromBytes_Aes(sqlRd.Item("Protected"), PWAES) <> "ThisIsNotProtected" Then
                             If Authenticate(sqlRd.Item("Protected"), False, rootInfo) = False Then
                                 My.Settings.LoadConsFromCustomLocation = False
@@ -422,7 +423,7 @@ Namespace Config
                         conI.Username = .Item("Username")
                         If EncryptionType = "MD5" Then
                             conI.Password = Security.Crypt.Decrypt(.Item("Password"), pW)
-                        ElseIf EncryptionType = "AES" Then
+                        Else 'If EncryptionType = "AES" Then
                             conI.Password = Security.Crypt.DecryptStringFromBytes_Aes(.Item("Password"), PWAES)
                         End If
                         conI.Domain = .Item("DomainName")
@@ -491,7 +492,7 @@ Namespace Config
                             conI.VNCProxyUsername = .Item("VNCProxyUsername")
                             If EncryptionType = "MD5" Then
                                 conI.VNCProxyPassword = Security.Crypt.Decrypt(.Item("VNCProxyPassword"), pW)
-                            ElseIf EncryptionType = "AES" Then
+                            Else 'If EncryptionType = "AES" Then
                                 conI.VNCProxyPassword = Security.Crypt.DecryptStringFromBytes_Aes(.Item("VNCProxyPassword"), PWAES)
                             End If
                             conI.VNCColors = Tools.Misc.StringToEnum(GetType(Connection.Protocol.VNC.Colors), .Item("VNCColors"))
@@ -544,7 +545,7 @@ Namespace Config
                             conI.RDGatewayUsername = .Item("RDGatewayUsername")
                             If EncryptionType = "MD5" Then
                                 conI.RDGatewayPassword = Security.Crypt.Decrypt(.Item("RDGatewayPassword"), pW)
-                            ElseIf EncryptionType = "AES" Then
+                            Else 'If EncryptionType = "AES" Then
                                 conI.RDGatewayPassword = Security.Crypt.DecryptStringFromBytes_Aes(.Item("RDGatewayPassword"), PWAES)
                             End If
                             conI.RDGatewayDomain = .Item("RDGatewayDomain")
@@ -695,6 +696,16 @@ Namespace Config
                     If Not IsNothing(xDom.DocumentElement.Attributes("Encryption")) Then
                         EncryptionType = xDom.DocumentElement.Attributes("Encryption").Value
                     End If
+                    If String.IsNullOrEmpty(EncryptionType) Then
+                        If My.Settings.mRemoteNGCompatible Then
+                            rootInfo.Encryption = Tools.Misc.EncryptionENUM.MD5
+                        Else
+                            rootInfo.Encryption = Tools.Misc.EncryptionENUM.Default
+                        End If
+                        EncryptionType = "MD5"
+                    Else
+                        rootInfo.Encryption = [Enum].Parse(GetType(Tools.Misc.EncryptionENUM), EncryptionType)
+                    End If
 
 
                     If Not IsNothing(xDom.DocumentElement.Attributes("Protected")) Then
@@ -707,7 +718,7 @@ Namespace Config
                                     Exit Sub
                                 End If
                             End If
-                        ElseIf EncryptionType = "AES" Then
+                        Else 'If EncryptionType = "AES" Then
                             If Security.Crypt.DecryptStringFromBytes_Aes(xDom.DocumentElement.Attributes("Protected").Value, PWAES) <> "ThisIsNotProtected" Then
                                 If Authenticate(xDom.DocumentElement.Attributes("Protected").Value, False, rootInfo) = False Then
                                     My.Settings.LoadConsFromCustomLocation = False
@@ -863,7 +874,7 @@ Namespace Config
                             conI.Username = .Attributes("Username").Value
                             If EncryptionType = "MD5" Then
                                 conI.Password = Security.Crypt.Decrypt(.Attributes("Password").Value, pW)
-                            ElseIf EncryptionType = "AES" Then
+                            Else 'If EncryptionType = "AES" Then
                                 conI.Password = Security.Crypt.DecryptStringFromBytes_Aes(.Attributes("Password").Value, PWAES)
                             End If
                             conI.Domain = .Attributes("Domain").Value
@@ -1018,7 +1029,7 @@ Namespace Config
                             conI.VNCProxyUsername = .Attributes("VNCProxyUsername").Value
                             If EncryptionType = "MD5" Then
                                 conI.VNCProxyPassword = Security.Crypt.Decrypt(.Attributes("VNCProxyPassword").Value, pW)
-                            ElseIf EncryptionType = "AES" Then
+                            Else 'If EncryptionType = "AES" Then
                                 conI.VNCProxyPassword = Security.Crypt.DecryptStringFromBytes_Aes(.Attributes("VNCProxyPassword").Value, PWAES)
                             End If
 
@@ -1071,7 +1082,7 @@ Namespace Config
                             conI.RDGatewayUsername = .Attributes("RDGatewayUsername").Value
                             If EncryptionType = "MD5" Then
                                 conI.RDGatewayPassword = Security.Crypt.Decrypt(.Attributes("RDGatewayPassword").Value, pW)
-                            ElseIf EncryptionType = "AES" Then
+                            Else 'If EncryptionType = "AES" Then
                                 conI.RDGatewayPassword = Security.Crypt.DecryptStringFromBytes_Aes(.Attributes("RDGatewayPassword").Value, PWAES)
                             End If
                             conI.RDGatewayDomain = .Attributes("RDGatewayDomain").Value
@@ -1164,7 +1175,7 @@ Namespace Config
                                 Return False
                             End If
                         Loop
-                    ElseIf EncryptionType = "AES" Then
+                    Else 'If EncryptionType = "AES" Then
                         If Not String.IsNullOrEmpty(My.Settings.MasterPassword) Then
                             If Security.Crypt.DecryptStringFromBytes_Aes(Value, My.Settings.MasterPassword) = "ThisIsProtected" Then
                                 PWAES = My.Settings.MasterPassword
@@ -1184,7 +1195,7 @@ Namespace Config
                         rootInfo.Password = True
                         If EncryptionType = "MD5" Then
                             rootInfo.PasswordString = pW
-                        ElseIf EncryptionType = "AES" Then
+                        Else 'If EncryptionType = "AES" Then
                             rootInfo.PasswordString = PWAES
                         End If
 

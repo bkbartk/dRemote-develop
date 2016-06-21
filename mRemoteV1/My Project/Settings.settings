@@ -587,8 +587,11 @@
     <Setting Name="MasterPassword" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ExtraPuttyParameters" Type="System.String" Scope="User">
+    <Setting Name="ExtraPuttyParameters"  Provider="dRemote.Config.Settings.Providers.ChooseProvider"  Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="mRemoteNGCompatible"  Provider="dRemote.Config.Settings.Providers.ChooseProvider"  Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

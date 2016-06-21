@@ -34,9 +34,15 @@ Namespace Root
 
         <LocalizedCategory("strCategoryDisplay", 1), _
             Browsable(True), _
-            LocalizedDisplayName("strPasswordProtect"), _
-            TypeConverter(GetType(Tools.Misc.YesNoTypeConverter))> _
+            LocalizedDisplayName("strPasswordProtect"),
+            TypeConverter(GetType(Tools.Misc.YesNoTypeConverter))>
         Public Property Password() As Boolean
+
+        <LocalizedCategory("strCategoryDisplay", 1),
+            Browsable(True),
+            DisplayName("Encryption Type"),
+            TypeConverter(GetType(Tools.Misc.EnumTypeConverter))>
+        Public Property Encryption() As Tools.Misc.EncryptionENUM
 
         <Browsable(False)> _
         Public Property PasswordString() As String

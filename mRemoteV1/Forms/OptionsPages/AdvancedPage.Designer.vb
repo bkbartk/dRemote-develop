@@ -42,6 +42,7 @@
             Me.btnBrowseCustomPuttyPath = New System.Windows.Forms.Button()
             Me.txtExtraPuttyParameters = New System.Windows.Forms.TextBox()
             Me.lblExtraPuttyParameters = New System.Windows.Forms.Label()
+            Me.chkmRemoteNGCompatible = New System.Windows.Forms.CheckBox()
             CType(Me.numPuttyWaitTime, System.ComponentModel.ISupportInitialize).BeginInit()
             CType(Me.numUVNCSCPort, System.ComponentModel.ISupportInitialize).BeginInit()
             Me.SuspendLayout()
@@ -217,10 +218,21 @@
             Me.lblExtraPuttyParameters.TabIndex = 35
             Me.lblExtraPuttyParameters.Text = "Extra Putty Parameters"
             '
+            'chkmRemoteNGCompatible
+            '
+            Me.chkmRemoteNGCompatible.AutoSize = True
+            Me.chkmRemoteNGCompatible.Location = New System.Drawing.Point(3, 3)
+            Me.chkmRemoteNGCompatible.Name = "chkmRemoteNGCompatible"
+            Me.chkmRemoteNGCompatible.Size = New System.Drawing.Size(142, 17)
+            Me.chkmRemoteNGCompatible.TabIndex = 36
+            Me.chkmRemoteNGCompatible.Text = "mRemoteNG Compatible"
+            Me.chkmRemoteNGCompatible.UseVisualStyleBackColor = True
+            '
             'AdvancedPage
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+            Me.Controls.Add(Me.chkmRemoteNGCompatible)
             Me.Controls.Add(Me.lblExtraPuttyParameters)
             Me.Controls.Add(Me.txtExtraPuttyParameters)
             Me.Controls.Add(Me.chkAutomaticallyGetSessionInfo)
@@ -266,5 +278,6 @@
         Friend WithEvents btnBrowseCustomPuttyPath As System.Windows.Forms.Button
         Friend WithEvents txtExtraPuttyParameters As TextBox
         Friend WithEvents lblExtraPuttyParameters As Label
+        Friend WithEvents chkmRemoteNGCompatible As CheckBox
     End Class
 End Namespace

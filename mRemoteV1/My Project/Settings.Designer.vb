@@ -2574,6 +2574,7 @@ Namespace My
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Configuration.SettingsProviderAttribute(GetType(dRemote.Config.Settings.Providers.ChooseProvider)),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property ExtraPuttyParameters() As String
@@ -2582,6 +2583,19 @@ Namespace My
             End Get
             Set
                 Me("ExtraPuttyParameters") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Configuration.SettingsProviderAttribute(GetType(dRemote.Config.Settings.Providers.ChooseProvider)),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property mRemoteNGCompatible() As Boolean
+            Get
+                Return CType(Me("mRemoteNGCompatible"),Boolean)
+            End Get
+            Set
+                Me("mRemoteNGCompatible") = value
             End Set
         End Property
     End Class

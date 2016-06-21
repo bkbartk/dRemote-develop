@@ -221,7 +221,14 @@ Namespace Tools
 
                 Return [Enum].Parse(_enumType, DirectCast(value, String))
             End Function
+
+
         End Class
+        Public Enum EncryptionENUM As Integer
+            [Default] = 0
+            AES = 1
+            MD5 = 2
+        End Enum
 
         Public Class YesNoTypeConverter
             Inherits TypeConverter
@@ -278,6 +285,8 @@ Namespace Tools
                 Return svc
             End Function
         End Class
+
+
 
         Public Class Fullscreen
             Public Sub New(ByVal handledForm As Form)

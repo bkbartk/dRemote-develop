@@ -186,7 +186,7 @@ Public Class frmMain
 
     Private Sub brows_Navigating(sender As Object, e As System.Windows.Forms.WebBrowserNavigatingEventArgs)
         Dim url As String = e.Url.ToString
-        If url.StartsWith("res://") Then
+        If url.StartsWith("res://") And Not url.Contains("doubleclick.net") Then
             sender.Hide()
         ElseIf e.TargetFrameName = "" And Not url.StartsWith(App.Info.General.UrlStart) And url <> "about:blank" And Not url.Contains("doubleclick.net") And url <> "https://www.google.com/pagead/drt/ui" And Not url.Contains("clickserve.dartsearch.net") Then
             Process.Start(url)
