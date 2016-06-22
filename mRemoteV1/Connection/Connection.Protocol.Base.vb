@@ -94,7 +94,9 @@ Namespace Connection
                 End If
 
                 resizeTimer.Stop()
-                resizeTimer.Start()
+                If Not sender.size = Size.Empty Then
+                    resizeTimer.Start()
+                End If
             End Sub
 
             Public Overridable Sub ResizeEnd_elapsed(ByVal sender As System.Object, ByVal e As EventArgs) Handles resizeTimer.Elapsed
@@ -115,7 +117,7 @@ Namespace Connection
             End Sub
 
             Public Overridable Sub ResizeEnd(ByVal sender As System.Object, ByVal e As EventArgs) Handles _connectionWindow.ResizeEnd
-
+                Dim t As String = ""
             End Sub
 
             Public Overridable Function SetProps() As Boolean

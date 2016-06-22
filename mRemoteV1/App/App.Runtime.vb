@@ -1363,6 +1363,12 @@ Namespace App
             '    pane = GetClosestPane(pane)
             'End If
 
+            If newConnectionInfo.PreExtApp <> "" Then
+                Dim extA As Tools.ExternalTool = App.Runtime.GetExtAppByName(newConnectionInfo.PreExtApp)
+                If extA IsNot Nothing Then
+                    extA.Start(newConnectionInfo)
+                End If
+            End If
 
             Dim conform As New Forms.frmConnections()
 
@@ -1441,7 +1447,7 @@ Namespace App
 
             'AddHandler newProtocol.Control.ClientSizeChanged, AddressOf newProtocol.ResizeEnd
             AddHandler conform.Resize, AddressOf newProtocol.ResizeV2
-            'AddHandler f2.ResizeEnd, AddressOf newProtocol.ResizeEnd
+            AddHandler conform.ResizeEnd, AddressOf newProtocol.ResizeEnd
             AddHandler conform.FormClosed, AddressOf Prot_Event_Closed
             'AddHandler conform.FormClosing, AddressOf Prot_Event_FormClosing
 
