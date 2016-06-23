@@ -140,16 +140,21 @@ Namespace Config
                     Dim tN As TreeNode
                     tN = RootTreeNode.Clone
 
+                    EncryptionType = [Enum].GetName(GetType(Tools.Misc.EncryptionENUM), TryCast(tN.Tag, Root.Info).Encryption)
+                    If EncryptionType = "MD5" Then
+                        _password = App.Info.General.EncryptionKey
+                    End If
+
                     Dim strProtected As String
                     If tN.Tag IsNot Nothing Then
                         If TryCast(tN.Tag, dRemote.Root.Info).Password = True Then
                             _password = TryCast(tN.Tag, dRemote.Root.Info).PasswordString
-                            strProtected = Security.Crypt.Encrypt("ThisIsProtected", _password)
+                            strProtected = Security.Crypt.Encrypt("ThisIsProtected", _password, EncryptionType)
                         Else
-                            strProtected = Security.Crypt.Encrypt("ThisIsNotProtected", _password)
+                            strProtected = Security.Crypt.Encrypt("ThisIsNotProtected", _password, EncryptionType)
                         End If
                     Else
-                        strProtected = Security.Crypt.Encrypt("ThisIsNotProtected", _password)
+                        strProtected = Security.Crypt.Encrypt("ThisIsNotProtected", _password, EncryptionType)
                     End If
 
                     _sqlQuery = New SqlCommand("DELETE FROM tblRoot", _sqlConnection)
@@ -161,10 +166,10 @@ Namespace Config
                     strCheckColumn &= "     ALTER TABLE tblRoot ADD Encryption NVARCHAR(1024) NULL "
                     strCheckColumn &= " END "
 
-                    _sqlQuery = New SqlCommand(strCheckColumn)
+                    _sqlQuery = New SqlCommand(strCheckColumn, _sqlConnection)
                     _sqlQuery.ExecuteNonQuery()
 
-                    _sqlQuery = New SqlCommand("INSERT INTO tblRoot (Name, Export, Protected ,Encryption, ConfVersion) VALUES('" & PrepareValueForDB(tN.Text) & "', 0, '" & strProtected & "','AES'," & App.Info.Connections.ConnectionFileVersion.ToString(CultureInfo.InvariantCulture) & ")", _sqlConnection)
+                    _sqlQuery = New SqlCommand("INSERT INTO tblRoot (Name, Export, Protected ,Encryption, ConfVersion) VALUES('" & PrepareValueForDB(tN.Text) & "', 0, '" & strProtected & "','" & EncryptionType & "'," & App.Info.Connections.ConnectionFileVersion.ToString(CultureInfo.InvariantCulture) & ")", _sqlConnection)
                     _sqlQuery.ExecuteNonQuery()
 
                     _sqlQuery = New SqlCommand("DELETE FROM tblCons", _sqlConnection)

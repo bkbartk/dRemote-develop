@@ -145,7 +145,7 @@ Namespace Config
 #Region "Public Methods"
             Public Sub Load(ByVal import As Boolean, ByRef tvConnections As TreeView)
                 If UseSQL Then
-                    LoadFromSQL()
+                    LoadFromSQL(tvConnections)
                 Else
                     Dim connections As String = DecryptCompleteFile()
                     LoadFromXML(connections, import, tvConnections)
@@ -164,13 +164,13 @@ Namespace Config
 
 #Region "SQL"
             Private Delegate Sub LoadFromSqlDelegate()
-            Private Sub LoadFromSQL()
+            Private  Sub LoadFromSQL(ByRef tvConnections As TreeView)
                 EncryptionType = "MD5"
-                If Windows.treeForm Is Nothing OrElse Windows.treeForm.tvConnections Is Nothing Then Return
-                If Windows.treeForm.tvConnections.InvokeRequired Then
-                    Windows.treeForm.tvConnections.Invoke(New LoadFromSqlDelegate(AddressOf LoadFromSQL))
-                    Return
-                End If
+                If tvConnections Is Nothing Then Return
+                'If tvConnections.InvokeRequired Then
+                '    tvConnections.Invoke(New LoadFromSqlDelegate(AddressOf LoadFromSQL), New Object() {tvConnections})
+                '    Return
+                'End If
 
                 Try
                     IsConnectionsFileLoaded = False
@@ -182,6 +182,14 @@ Namespace Config
                     End If
 
                     sqlCon.Open()
+
+                    Dim strCheckColumn As String = "IF NOT EXISTS(SELECT * FROM sys.columns WHERE Name = N'Encryption' AND Object_ID = Object_ID(N'tblRoot')) "
+                    strCheckColumn &= " BEGIN "
+                    strCheckColumn &= "     ALTER TABLE tblRoot ADD Encryption NVARCHAR(1024) NULL "
+                    strCheckColumn &= " END "
+
+                    sqlQuery = New SqlCommand(strCheckColumn, sqlCon)
+                    sqlQuery.ExecuteNonQuery()
 
                     sqlQuery = New SqlCommand("SELECT * FROM tblRoot", sqlCon)
                     sqlRd = sqlQuery.ExecuteReader(CommandBehavior.CloseConnection)
@@ -216,6 +224,18 @@ Namespace Config
                     If Not IsDBNull(sqlRd.Item("Encryption")) Then
                         EncryptionType = sqlRd.Item("Encryption")
                     End If
+
+                    If String.IsNullOrEmpty(EncryptionType) Then
+                        If My.Settings.mRemoteNGCompatible Then
+                            rootInfo.Encryption = Tools.Misc.EncryptionENUM.MD5
+                        Else
+                            rootInfo.Encryption = Tools.Misc.EncryptionENUM.Default
+                        End If
+                        EncryptionType = "MD5"
+                    Else
+                        rootInfo.Encryption = [Enum].Parse(GetType(Tools.Misc.EncryptionENUM), EncryptionType)
+                    End If
+
                     If EncryptionType = "MD5" Then
                         If Security.Crypt.Decrypt(sqlRd.Item("Protected"), pW) <> "ThisIsNotProtected" Then
                             If Authenticate(sqlRd.Item("Protected"), False, rootInfo) = False Then
@@ -238,9 +258,11 @@ Namespace Config
                     End If
 
 
+
+
                     sqlRd.Close()
 
-                    Windows.treeForm.tvConnections.BeginUpdate()
+                    tvConnections.BeginUpdate()
 
                     ' SECTION 3. Populate the TreeView with the DOM nodes.
                     AddNodesFromSQL(RootTreeNode)
@@ -254,7 +276,7 @@ Namespace Config
                         End If
                     Next
 
-                    Windows.treeForm.tvConnections.EndUpdate()
+                    tvConnections.EndUpdate()
 
                     'open connections from last mremote session
                     If My.Settings.OpenConsFromLastSession = True And My.Settings.NoReconnect = False Then
@@ -266,8 +288,8 @@ Namespace Config
                     End If
 
                     IsConnectionsFileLoaded = True
-                    Windows.treeForm.InitialRefresh()
-                    SetSelectedNode(_selectedTreeNode)
+                    'Windows.treeForm.InitialRefresh()
+                    SetSelectedNode(_selectedTreeNode, tvConnections)
                 Catch ex As Exception
                     MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, My.Language.strLoadFromSqlFailed & vbNewLine & ex.Message, True)
                 Finally
@@ -277,13 +299,13 @@ Namespace Config
                 End Try
             End Sub
 
-            Private Delegate Sub SetSelectedNodeDelegate(ByVal treeNode As TreeNode)
-            Private Shared Sub SetSelectedNode(ByVal treeNode As TreeNode)
-                If Tree.Node.TreeView IsNot Nothing AndAlso Tree.Node.TreeView.InvokeRequired Then
-                    Windows.treeForm.Invoke(New SetSelectedNodeDelegate(AddressOf SetSelectedNode), New Object() {treeNode})
-                    Return
-                End If
-                Windows.treeForm.tvConnections.SelectedNode = treeNode
+            Private Delegate Sub SetSelectedNodeDelegate(ByVal treeNode As TreeNode, ByRef tvConnections As TreeView)
+            Private Shared Sub SetSelectedNode(ByVal treeNode As TreeNode, ByRef tvConnections As TreeView)
+                'If Tree.Node.TreeView IsNot Nothing AndAlso Tree.Node.TreeView.InvokeRequired Then
+                '    Windows.treeForm.Invoke(New SetSelectedNodeDelegate(AddressOf SetSelectedNode), New Object() {treeNode})
+                '    Return
+                'End If
+                tvConnections.SelectedNode = treeNode
             End Sub
 
             Private Sub AddNodesFromSQL(ByVal baseNode As TreeNode)
@@ -777,7 +799,7 @@ Namespace Config
                     If Not import Then IsConnectionsFileLoaded = True
                     If Not My.Settings.Beta Then
                         Windows.treeForm.InitialRefresh()
-                        SetSelectedNode(RootTreeNode)
+                        SetSelectedNode(RootTreeNode, tvConnections)
                     End If
                 Catch ex As Exception
                     App.Runtime.IsConnectionsFileLoaded = False
