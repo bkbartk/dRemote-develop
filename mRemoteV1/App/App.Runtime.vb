@@ -658,7 +658,12 @@ Namespace App
         Public Class Shutdown
             Public Shared Sub Quit(Optional ByVal updateFilePath As String = Nothing)
                 _updateFilePath = updateFilePath
-                frmMain.Close()
+                If NotificationAreaIcon IsNot Nothing Then
+                    If NotificationAreaIcon.Disposed = False Then
+                        NotificationAreaIcon.Dispose()
+                    End If
+                End If
+                System.Windows.Forms.Application.Exit()
             End Sub
 
             Public Shared Sub Cleanup()

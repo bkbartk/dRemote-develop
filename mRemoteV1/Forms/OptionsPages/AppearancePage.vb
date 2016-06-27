@@ -71,5 +71,6 @@ Namespace Forms.OptionsPages
 
             Settings.MinimizeToTray = chkMinimizeToSystemTray.Checked
         End Sub
+
     End Class
 End Namespace

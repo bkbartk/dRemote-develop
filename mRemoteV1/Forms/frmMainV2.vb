@@ -16,6 +16,7 @@ Imports PSTaskDialog
 Imports dRemote.Config
 Imports dRemote.Themes
 Imports System.Net
+Imports System.ComponentModel
 
 Public Class frmMainV2
     Dim QuickConnectWindow As UI.Window.QuickConnect
@@ -224,12 +225,16 @@ Public Class frmMainV2
         '    Case MsgBoxResult.Cancel
         '        Return
         'End Select
-
+        If NotificationAreaIcon IsNot Nothing Then
+            If NotificationAreaIcon.Disposed = False Then
+                NotificationAreaIcon.Dispose()
+            End If
+        End If
         SaveConnections()
         SavePanelsToXML()
         My.Settings.Beta = False
         My.Settings.Save()
-        Threading.Thread.Sleep(500)
+        'Threading.Thread.Sleep(500)
         System.Windows.Forms.Application.Restart()
         'Application.Exit()
         'Process.Start(Application.ExecutablePath)
@@ -254,10 +259,19 @@ Public Class frmMainV2
         '    Case MsgBoxResult.Cancel
         '        Return
         'End Select
-        SaveConnections()
+        'SaveConnections()
         SavePanelsToXML()
+        If NotificationAreaIcon IsNot Nothing Then
+            If NotificationAreaIcon.Disposed = False Then
+                NotificationAreaIcon.Dispose()
+            End If
+        End If
         System.Windows.Forms.Application.Exit()
     End Sub
+
+    'Private Sub frmMainV2_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+    '    Shutdown.Cleanup()
+    'End Sub
     Public Shared Sub SavePanelsToXML()
         Try
             If Not Directory.Exists(App.Info.Settings.SettingsPath) Then
@@ -361,5 +375,7 @@ Public Class frmMainV2
             Windows.errorsForm.Hide()
         End If
     End Sub
+
+
 End Class
 

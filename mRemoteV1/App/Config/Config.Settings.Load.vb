@@ -59,6 +59,12 @@ Namespace Config
                         Connection.Protocol.PuttyBase.PuttyPath = App.Info.General.PuttyPath
                     End If
 
+                    If My.Settings.ShowSystemTrayIcon Then
+                        App.Runtime.NotificationAreaIcon = New Tools.Controls.NotificationAreaIcon(Sender)
+                    End If
+
+
+                    'only applies to classic interface
                     If Not IsNothing(Me._MainForm) Then
                         With Me._MainForm
 
@@ -102,9 +108,7 @@ Namespace Config
                             End If
 
 
-                            If My.Settings.ShowSystemTrayIcon Then
-                                App.Runtime.NotificationAreaIcon = New Tools.Controls.NotificationAreaIcon(Sender)
-                            End If
+
 
                             If My.Settings.AutoSaveEveryMinutes > 0 Then
                                 .tmrAutoSave.Interval = My.Settings.AutoSaveEveryMinutes * 60000

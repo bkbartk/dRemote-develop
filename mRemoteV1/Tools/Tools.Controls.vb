@@ -171,7 +171,13 @@ Namespace Tools
                 If e.Button = MouseButtons.Left Then
                     If TypeOf sender.Tag Is Connection.Info Then
                         If mainform.Visible = False Then ShowForm()
-                        App.Runtime.OpenConnection(sender.Tag)
+                        If My.Settings.Beta Then
+                            OpenConnectionV2(sender.Tag, sender)
+                        Else
+                            OpenConnection(sender.Tag)
+                        End If
+
+                        'App.Runtime.OpenConnection(sender.Tag)
                     End If
                 End If
             End Sub
@@ -179,6 +185,7 @@ Namespace Tools
             Private Sub cMenExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
                 SaveConnections()
                 App.Runtime.Shutdown.Quit()
+
             End Sub
         End Class
 
