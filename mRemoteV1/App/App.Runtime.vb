@@ -1450,10 +1450,13 @@ Namespace App
             End If
             newProtocol.InterfaceControl = New dRemote.Connection.InterfaceControl(conform, newProtocol, newConnectionInfo)
 
+
             'AddHandler newProtocol.Control.ClientSizeChanged, AddressOf newProtocol.ResizeEnd
             AddHandler conform.Resize, AddressOf newProtocol.ResizeV2
             AddHandler conform.ResizeEnd, AddressOf newProtocol.ResizeEnd
             AddHandler conform.FormClosed, AddressOf Prot_Event_Closed
+            'AddHandler conform.GotFocus, AddressOf GotFocus
+
             'AddHandler conform.FormClosing, AddressOf Prot_Event_FormClosing
 
             ShowHideMenuButtons(conform, newProtocol)
@@ -1495,6 +1498,12 @@ Namespace App
             'frmMainV2.SelectedConnection = newConnectionInfo
 
         End Sub
+
+        'Shared Sub GotFocus(ByVal sender As System.Object, ByVal e As EventArgs)
+        '    If sender.controls.count > 0 Then
+        '        sender.controls(0).focus()
+        '    End If
+        'End Sub
         Shared Sub ShowHideMenuButtons(ByRef conform As Forms.frmConnections, newProtocol As Protocol.Base)
             Try
                 Dim IC As dRemote.Connection.InterfaceControl = newProtocol.InterfaceControl
@@ -1577,6 +1586,24 @@ Namespace App
             Catch ex As Exception
                 MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, "cMenTreeTools_DropDownOpening failed (UI.Window.Tree)" & vbNewLine & ex.Message, True)
             End Try
+        End Sub
+
+        Shared Sub brows_Navigating(sender As Object, e As System.Windows.Forms.WebBrowserNavigatingEventArgs)
+            Dim url As String = e.Url.ToString
+            If url.StartsWith("res://") And Not url.Contains("doubleclick.net") Then
+                sender.Hide()
+            ElseIf e.TargetFrameName = "" _
+                And Not url.StartsWith(App.Info.General.UrlStart) _
+                And url <> "about:blank" And Not url.Contains("doubleclick.net") _
+                And url <> "https://www.google.com/pagead/drt/ui" _
+            And Not url.Contains("clickserve.dartsearch.net") _
+            And Not url.Contains("jsiframe") Then
+                Process.Start(url)
+                e.Cancel = True
+                If Not sender.url.ToString.Contains("dremote") Then
+                    sender.Url = New Uri(App.Info.General.UrlStart)
+                End If
+            End If
         End Sub
 
         Public Shared Sub OpenConnection(ByVal tvConnections As TreeView)

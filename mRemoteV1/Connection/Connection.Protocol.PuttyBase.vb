@@ -191,8 +191,12 @@ Namespace Connection
 
             Public Overrides Sub Focus()
                 Try
-                    'If ConnectionWindow.InTabDrag Then Return
-                    'SetForegroundWindow(PuttyHandle)
+                    If My.Settings.Beta Then
+                        SetForegroundWindow(PuttyHandle)
+
+                    ElseIf Not ConnectionWindow.InTabDrag Then
+                        SetForegroundWindow(PuttyHandle)
+                    End If
                 Catch ex As Exception
                     MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, My.Language.strPuttyFocusFailed & vbNewLine & ex.Message, True)
                 End Try

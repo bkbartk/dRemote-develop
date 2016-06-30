@@ -35,13 +35,13 @@ Partial Class frmMainV2
         Me.mMenViewConnections = New System.Windows.Forms.ToolStripMenuItem()
         Me.mMenViewConfig = New System.Windows.Forms.ToolStripMenuItem()
         Me.mMenViewQuickConnectToolbar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mMenViewErrorsAndInfos = New System.Windows.Forms.ToolStripMenuItem()
         Me.mMenToolsUpdate = New System.Windows.Forms.ToolStripMenuItem()
         Me.mMenToolsOptions = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmenTabSep1 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnAmout = New System.Windows.Forms.ToolStripMenuItem()
         Me.DockPanel1 = New WeifenLuo.WinFormsUI.Docking.DockPanel()
         Me.VS2013BlueTheme2 = New WeifenLuo.WinFormsUI.Docking.VS2013BlueTheme()
-        Me.mMenViewErrorsAndInfos = New System.Windows.Forms.ToolStripMenuItem()
         Me.mainMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -50,7 +50,7 @@ Partial Class frmMainV2
         Me.mainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsToolStripMenuItem, Me.cMenLayout, Me.mMenToolsUpdate, Me.mMenToolsOptions, Me.cmenTabSep1, Me.btnAmout})
         Me.mainMenu.Name = "cmenTab"
         Me.mainMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mainMenu.Size = New System.Drawing.Size(172, 142)
+        Me.mainMenu.Size = New System.Drawing.Size(172, 120)
         Me.mainMenu.Text = "File"
         '
         'ToolsToolStripMenuItem
@@ -130,6 +130,15 @@ Partial Class frmMainV2
         Me.mMenViewQuickConnectToolbar.Size = New System.Drawing.Size(196, 22)
         Me.mMenViewQuickConnectToolbar.Text = "Quick Connect Toolbar"
         '
+        'mMenViewErrorsAndInfos
+        '
+        Me.mMenViewErrorsAndInfos.Checked = True
+        Me.mMenViewErrorsAndInfos.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.mMenViewErrorsAndInfos.Image = Global.dRemote.My.Resources.Resources.ErrorsAndInfos
+        Me.mMenViewErrorsAndInfos.Name = "mMenViewErrorsAndInfos"
+        Me.mMenViewErrorsAndInfos.Size = New System.Drawing.Size(196, 22)
+        Me.mMenViewErrorsAndInfos.Text = "Errors and Infos"
+        '
         'mMenToolsUpdate
         '
         Me.mMenToolsUpdate.Image = Global.dRemote.My.Resources.Resources.Update
@@ -166,15 +175,6 @@ Partial Class frmMainV2
         Me.DockPanel1.Size = New System.Drawing.Size(664, 383)
         Me.DockPanel1.TabIndex = 0
         Me.DockPanel1.Theme = Me.VS2013BlueTheme2
-        '
-        'mMenViewErrorsAndInfos
-        '
-        Me.mMenViewErrorsAndInfos.Checked = True
-        Me.mMenViewErrorsAndInfos.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.mMenViewErrorsAndInfos.Image = Global.dRemote.My.Resources.Resources.ErrorsAndInfos
-        Me.mMenViewErrorsAndInfos.Name = "mMenViewErrorsAndInfos"
-        Me.mMenViewErrorsAndInfos.Size = New System.Drawing.Size(196, 22)
-        Me.mMenViewErrorsAndInfos.Text = "Errors and Infos"
         '
         'frmMainV2
         '

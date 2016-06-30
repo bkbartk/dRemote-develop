@@ -196,6 +196,17 @@ Namespace Forms
         Friend WithEvents cmenTabReconnect As ToolStripMenuItem
         Friend WithEvents cmenTabDisconnect As ToolStripMenuItem
 
+        Private Sub frmConnections_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        End Sub
+
+
+        'Private Sub frmConnections_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
+        '    If sender.controls.count > 0 Then
+        '        Dim pr As System.Diagnostics.Process = sender.controls(0).protocol.PuttyProcess
+        '        pr.Close()
+        '    End If
+        'End Sub
 
 
         'Private Sub frmConnections_Closed(sender As Object, e As EventArgs) Handles Me.Closed

@@ -196,6 +196,11 @@ Namespace Connection
                                 'parent.Show()
                                 parent.Select()
                                 parent.Close()
+                                If TypeOf Windows.dockPanel.ActiveDocument Is dRemote.Forms.frmConnections Then
+                                    Dim cW As dRemote.Forms.frmConnections = Windows.dockPanel.ActiveDocument
+                                    cW.Select()
+                                    ActivateConnection(Windows.dockPanel)
+                                End If
 
                             Else
                                 If Me._interfaceControl.Parent.Tag IsNot Nothing Then
@@ -213,6 +218,19 @@ Namespace Connection
                 Catch ex As Exception
                     MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, "Couldn't Close InterfaceControl BG (Connection.Protocol.Base)" & vbNewLine & ex.Message, True)
                 End Try
+            End Sub
+            Private Sub ActivateConnection(ByRef DockPanel1 As WeifenLuo.WinFormsUI.Docking.DockPanel)
+                If TypeOf DockPanel1.ActiveDocument Is dRemote.Forms.frmConnections Then
+                    Dim cW As dRemote.Forms.frmConnections = DockPanel1.ActiveDocument
+                    If cW.Controls.Count > 0 Then
+                        Dim ctrl As Control = cW.Controls(0)
+                        Dim ifc As Connection.InterfaceControl = TryCast(ctrl, Connection.InterfaceControl)
+                        If Not IsNothing(ifc) Then
+                            ifc.Protocol.Focus()
+                        End If
+
+                    End If
+                End If
             End Sub
 
             Private Delegate Sub DisposeInterfaceCB()

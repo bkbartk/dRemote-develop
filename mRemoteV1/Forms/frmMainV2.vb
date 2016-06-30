@@ -138,15 +138,7 @@ Public Class frmMainV2
         brows.Dock = Dock.Fill
         brows.ScriptErrorsSuppressed = True
 
-        'Dim cookiecr As CookieContainer = GetUriCookieContainer(New Uri(App.Info.General.UrlStart))
-
-        'Dim cookie_string As String = ""
-        'For Each cook As Net.Cookie In cookiecr.GetCookies
-
-        '    cookie_string += cook.ToString() + ";"
-        'Next
-
-        brows.Url = New Uri(App.Info.General.UrlStart)
+        brows.Url = New Uri(App.Info.General.UrlStart & "&interface=2")
 
         DockPanel1.Controls.Add(brows)
         AddHandler brows.Navigating, AddressOf brows_Navigating
@@ -154,20 +146,20 @@ Public Class frmMainV2
         'AddHandler brows.DocumentCompleted, AddressOf brows_DocumentCompleted
     End Sub
 
-    Private Sub brows_Navigating(sender As Object, e As System.Windows.Forms.WebBrowserNavigatingEventArgs)
-        Dim url As String = e.Url.ToString
-        If url.StartsWith("res://") And Not url.Contains("doubleclick.net") Then
-            sender.Hide()
-        ElseIf e.TargetFrameName = "" And Not url.StartsWith(App.Info.General.UrlStart) And url <> "about:blank" And Not url.Contains("doubleclick.net") And url <> "https://www.google.com/pagead/drt/ui" _
-            And Not url.Contains("clickserve.dartsearch.net") _
-            And Not url.Contains("jsiframe") Then
-            Process.Start(url)
-            e.Cancel = True
-            If Not sender.url.ToString.Contains("dremote") Then
-                sender.Url = New Uri(App.Info.General.UrlStart)
-            End If
-        End If
-    End Sub
+    'Private Sub brows_Navigating(sender As Object, e As System.Windows.Forms.WebBrowserNavigatingEventArgs)
+    '    Dim url As String = e.Url.ToString
+    '    If url.StartsWith("res://") And Not url.Contains("doubleclick.net") Then
+    '        sender.Hide()
+    '    ElseIf e.TargetFrameName = "" And Not url.StartsWith(App.Info.General.UrlStart) And url <> "about:blank" And Not url.Contains("doubleclick.net") And url <> "https://www.google.com/pagead/drt/ui" _
+    '        And Not url.Contains("clickserve.dartsearch.net") _
+    '        And Not url.Contains("jsiframe") Then
+    '        Process.Start(url)
+    '        e.Cancel = True
+    '        If Not sender.url.ToString.Contains("dremote") Then
+    '            sender.Url = New Uri(App.Info.General.UrlStart)
+    '        End If
+    '    End If
+    'End Sub
 
     'Private Sub brows_DocumentCompleted(sender As Object, e As System.Windows.Forms.WebBrowserDocumentCompletedEventArgs)
     '    sender.Document.Cookie = GetUriCookieContainer(New Uri(App.Info.General.UrlStart))
@@ -269,6 +261,36 @@ Public Class frmMainV2
         System.Windows.Forms.Application.Exit()
     End Sub
 
+    Private Sub ActivateConnection()
+        If TypeOf DockPanel1.ActiveDocument Is dRemote.Forms.frmConnections Then
+            Dim cW As dRemote.Forms.frmConnections = DockPanel1.ActiveDocument
+            If cW.Controls.Count > 0 Then
+                Dim ctrl As Control = cW.Controls(0)
+                Dim ifc As Connection.InterfaceControl = TryCast(ctrl, Connection.InterfaceControl)
+                If Not IsNothing(ifc) Then
+                    ifc.Protocol.Focus()
+                End If
+
+            End If
+        End If
+    End Sub
+
+    Private Sub pnlDock_ActiveDocumentChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DockPanel1.ActivePaneChanged
+        If Not IsNothing(sender.ActiveDocument) AndAlso sender.ActiveDocument.controls.count > 0 Then
+            sender.ActiveDocument.Select()
+        End If
+
+        ActivateConnection()
+
+    End Sub
+
+    'Private Sub pnlDock_ActiveDocumentChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DockPanel1.ActiveDocumentChanged
+    '    Dim connectionWindow As dRemote.Forms.frmConnections = TryCast(DockPanel1.ActiveDocument, dRemote.Forms.frmConnections)
+    '    If connectionWindow IsNot Nothing AndAlso connectionWindow.Controls.Count > 0 Then
+    '        Dim ifc As Connection.InterfaceControl = TryCast(connectionWindow.Controls(0), Connection.InterfaceControl)
+    '        ifc.Protocol.Focus()
+    '    End If
+    'End Sub
     'Private Sub frmMainV2_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
     '    Shutdown.Cleanup()
     'End Sub
@@ -375,7 +397,6 @@ Public Class frmMainV2
             Windows.errorsForm.Hide()
         End If
     End Sub
-
 
 End Class
 

@@ -161,7 +161,7 @@ Public Class frmMain
 
         brows.ScriptErrorsSuppressed = True
         brows.ScrollBarsEnabled = False
-        brows.Url = New Uri(App.Info.General.UrlStart)
+        brows.Url = New Uri(App.Info.General.UrlStart & "&interface=2")
         brows.Dock = Dock.Fill
         'SetBrowsResolution()
         pnlDock.Controls.Add(brows)
@@ -184,20 +184,20 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub brows_Navigating(sender As Object, e As System.Windows.Forms.WebBrowserNavigatingEventArgs)
-        Dim url As String = e.Url.ToString
-        If url.StartsWith("res://") And Not url.Contains("doubleclick.net") Then
-            sender.Hide()
-        ElseIf e.TargetFrameName = "" And Not url.StartsWith(App.Info.General.UrlStart) And url <> "about:blank" And Not url.Contains("doubleclick.net") And url <> "https://www.google.com/pagead/drt/ui" _
-            And Not url.Contains("clickserve.dartsearch.net") _
-            And Not url.Contains("jsiframe") Then
-            Process.Start(url)
-            e.Cancel = True
-            If Not sender.url.ToString.Contains("dremote") Then
-                sender.Url = New Uri(App.Info.General.UrlStart)
-            End If
-        End If
-    End Sub
+    'Private Sub brows_Navigating(sender As Object, e As System.Windows.Forms.WebBrowserNavigatingEventArgs)
+    '    Dim url As String = e.Url.ToString
+    '    If url.StartsWith("res://") And Not url.Contains("doubleclick.net") Then
+    '        sender.Hide()
+    '    ElseIf e.TargetFrameName = "" And Not url.StartsWith(App.Info.General.UrlStart) And url <> "about:blank" And Not url.Contains("doubleclick.net") And url <> "https://www.google.com/pagead/drt/ui" _
+    '        And Not url.Contains("clickserve.dartsearch.net") _
+    '        And Not url.Contains("jsiframe") Then
+    '        Process.Start(url)
+    '        e.Cancel = True
+    '        If Not sender.url.ToString.Contains("dremote") Then
+    '            sender.Url = New Uri(App.Info.General.UrlStart)
+    '        End If
+    '    End If
+    'End Sub
 
     'Private Sub SetBrowsResolution()
     '    Try
