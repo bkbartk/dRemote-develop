@@ -1590,14 +1590,57 @@ Namespace App
 
         Shared Sub brows_Navigating(sender As Object, e As System.Windows.Forms.WebBrowserNavigatingEventArgs)
             Dim url As String = e.Url.ToString
-            If url.StartsWith("res://") And Not url.Contains("doubleclick.net") Then
-                sender.Hide()
+            Dim checkCommercialUrl As String() = {
+            ".msads.net",
+            ".msecn.net",
+            ".rad.msn.com",
+            "a.ads2.msads.net",
+            "ac3.msn.com",
+            ".doubleclick.net",
+            "adnexus.net",
+            "adnxs.com",
+            "ads1.msn.com",
+            "ads2.msads.net",
+            "aka-cdn-ns.adtech.de",
+            "apps.skype.com",
+            "b.ads2.msads.net",
+            "bs.serving-sys.com",
+            "cdn.atdmt.com",
+            "cds26.ams9.msecn.net",
+            "db3aqu.atdmt.com",
+            "ec.atdmt.com",
+            "flex.msn.com",
+            "g.msn.com",
+            "live.rads.msn.com",
+            "msntest.serving-sys.com",
+            "rad.msn.com",
+            "sO.2mdn.net",
+            "secure.flashtalking.com",
+            "static.2mdn.net"}
+            Dim conTainsaddhost As Boolean = False
+            Dim Uurl As Uri = e.Url
+            For Each Str As String In checkCommercialUrl
+                If Uurl.Host.Contains(Str) Then
+                    conTainsaddhost = True
+                End If
+            Next
+
+            If Uurl.Scheme = "res" Then
+                Dim resconTainsaddhost As Boolean = False
+                For Each Str As String In checkCommercialUrl
+                    If url.Contains(Str) Then
+                        resconTainsaddhost = True
+                    End If
+                Next
+                If Not resconTainsaddhost Then
+                    sender.Hide()
+                End If
             ElseIf e.TargetFrameName = "" _
                 And Not url.StartsWith(App.Info.General.UrlStart) _
-                And url <> "about:blank" And Not url.Contains("doubleclick.net") _
+                And url <> "about:blank" _
                 And url <> "https://www.google.com/pagead/drt/ui" _
-            And Not url.Contains("clickserve.dartsearch.net") _
-            And Not url.Contains("jsiframe") Then
+                And Not conTainsaddhost _
+                And Not url.Contains("jsiframe") Then
                 Process.Start(url)
                 e.Cancel = True
                 If Not sender.url.ToString.Contains("dremote") Then
@@ -1605,6 +1648,9 @@ Namespace App
                 End If
             End If
         End Sub
+
+
+
 
         Public Shared Sub OpenConnection(ByVal tvConnections As TreeView)
             Try
