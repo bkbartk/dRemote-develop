@@ -1378,37 +1378,44 @@ Namespace App
             Dim conform As New Forms.frmConnections()
 
             Dim ctrlAddConnection As Control
+            Dim conIcon As Drawing.Icon = dRemote.Connection.Icon.FromString(newConnectionInfo.Icon)
             If My.Settings.GroupTabs Then
+                Dim tc As New Crownwood.Magic.Controls.TabControl
 
-                'Dim frmGroup As New Forms.frmGroupTabs()
 
-                'frmGroup.Show(App.Runtime.Windows.dockPanel, DockState.Document)
 
-                'conform.Show(frmGroup.pnlGroup, DockState.Document)
-                'conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
-                'Dim subpnl As New WeifenLuo.WinFormsUI.Docking.DockPanel()
-
-                'subpnl.Dock = DockStyle.Fill
-                'subpnl.Show()
-                'conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
-                Dim tc As New TabControl
                 Try
                     For Each pn As DockPane In App.Runtime.Windows.dockPanel.Panes
                         If pn.CaptionText = newConnectionInfo.Parent.Name Then
                             Dim t As String = ""
                             conform = TryCast(pn.Contents(0), Forms.frmConnections)
-                            tc = TryCast(conform.Controls.Find("tc", False)(0), TabControl)
+                            tc = TryCast(conform.Controls.Find("tc", False)(0), Crownwood.Magic.Controls.TabControl)
                         End If
                     Next
                 Catch ex As Exception
 
                 End Try
+                AddHandler tc.DragDrop, AddressOf TabController_DragDrop
+                AddHandler tc.DragEnter, AddressOf TabController_DragEnter
+                AddHandler tc.DragOver, AddressOf TabController_DragOver
+                AddHandler tc.PageDragEnd, AddressOf TabController_PageDragStart
+                AddHandler tc.PageDragStart, AddressOf TabController_PageDragStart
+                AddHandler tc.PageDragMove, AddressOf TabController_PageDragMove
+                AddHandler tc.PageDragEnd, AddressOf TabController_PageDragEnd
+                AddHandler tc.PageDragQuit, AddressOf TabController_PageDragEnd
+                tc.Appearance = Magic.Controls.TabControl.VisualAppearance.MultiDocument
 
                 tc.Name = "tc"
                 tc.Dock = DockStyle.Fill
+                tc.AllowDrop = True
+                tc.DragOverSelect = True
+                tc.DragFromControl = False
 
-                Dim tp As New TabPage
 
+                Dim tp As New Crownwood.Magic.Controls.TabPage
+                tp.Title = newConnectionInfo.Name
+                tp.Icon = conIcon
+                tp.AllowDrop = True
                 tc.TabPages.Add(tp)
                 conform.Controls.Add(tc)
                 ctrlAddConnection = tp
@@ -1465,7 +1472,7 @@ Namespace App
             AddHandler newProtocol.ErrorOccured, AddressOf Prot_Event_ErrorOccured
 
 
-            Dim conIcon As Drawing.Icon = dRemote.Connection.Icon.FromString(newConnectionInfo.Icon)
+
             If conIcon IsNot Nothing Then
                 conform.Icon = conIcon
             End If
@@ -1524,6 +1531,55 @@ Namespace App
             'frmMainV2.SelectedConnection = newConnectionInfo
 
         End Sub
+
+
+        Shared Sub TabController_DragDrop(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs)
+            If e.Data.GetDataPresent("System.Windows.Forms.TreeNode", True) Then
+                App.Runtime.OpenConnectionV2(e.Data.GetData("System.Windows.Forms.TreeNode", True).Tag, sender, dRemote.Connection.Info.Force.DoNotJump)
+            End If
+        End Sub
+
+        Shared Sub TabController_DragEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs)
+            If e.Data.GetDataPresent("System.Windows.Forms.TreeNode", True) Then
+                e.Effect = DragDropEffects.Move
+            End If
+        End Sub
+
+        Shared Sub TabController_DragOver(ByVal sender As Object, ByVal e As System.Windows.Forms.DragEventArgs)
+            e.Effect = DragDropEffects.Move
+        End Sub
+
+
+        Shared Property InTabDrag As Boolean = False
+        Shared Sub TabController_PageDragStart(ByVal sender As Object, ByVal e As MouseEventArgs)
+            sender.Cursor = Cursors.SizeWE
+        End Sub
+
+        Shared Sub TabController_PageDragMove(ByVal sender As Object, ByVal e As MouseEventArgs)
+            InTabDrag = True ' For some reason PageDragStart gets raised again after PageDragEnd so set this here instead
+
+            Dim sourceTab As Magic.Controls.TabPage = sender.SelectedTab
+            Dim destinationTab As Magic.Controls.TabPage = sender.TabPageFromPoint(e.Location)
+
+            If Not sender.TabPages.Contains(destinationTab) Or sourceTab Is destinationTab Then Return
+
+            Dim targetIndex As Integer = sender.TabPages.IndexOf(destinationTab)
+
+            sender.TabPages.SuspendEvents()
+            sender.TabPages.Remove(sourceTab)
+            sender.TabPages.Insert(targetIndex, sourceTab)
+            sender.SelectedTab = sourceTab
+            sender.TabPages.ResumeEvents()
+        End Sub
+
+        Shared Sub TabController_PageDragEnd(ByVal sender As Object, ByVal e As MouseEventArgs)
+            sender.Cursor = Cursors.Default
+            InTabDrag = False
+            Dim interfaceControl As dRemote.Connection.InterfaceControl = TryCast(sender.SelectedTab.Tag, dRemote.Connection.InterfaceControl)
+            If interfaceControl IsNot Nothing Then interfaceControl.Protocol.Focus()
+        End Sub
+
+
 
         'Shared Sub GotFocus(ByVal sender As System.Object, ByVal e As EventArgs)
         '    If sender.controls.count > 0 Then
