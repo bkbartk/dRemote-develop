@@ -8,7 +8,7 @@ Namespace App
             Public Shared ReadOnly URLDonate As String = "http://www.dremote.nl/donate/"
             Public Shared ReadOnly URLForum As String = "http://forum.dRemote.nl/"
             Public Shared ReadOnly URLBugs As String = "http://forum.dremote.nl/viewforum.php?f=3"
-            Public Shared ReadOnly UrlStart As String = "http://www.dremote.nl/application/index2.html" & "?v=" & My.Application.Info.Version.ToString
+            Public Shared ReadOnly UrlStart As String = "http://www.dremote.nl/application/" & "?v=" & My.Application.Info.Version.ToString
             Public Shared ReadOnly URLUpdate As String = "http://update.dremote.nl/update.txt"
             Public Shared ReadOnly HomePath As String = My.Application.Info.DirectoryPath
             Public Shared EncryptionKey As String = "mR3m"

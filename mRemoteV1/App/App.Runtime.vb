@@ -1377,26 +1377,52 @@ Namespace App
 
             Dim conform As New Forms.frmConnections()
 
-            'If My.Settings.GroupTabs Then
-            '    'Dim frmGroup As New Forms.frmGroupTabs()
+            Dim ctrlAddConnection As Control
+            If My.Settings.GroupTabs Then
 
-            '    'frmGroup.Show(App.Runtime.Windows.dockPanel, DockState.Document)
-            '    'frmGroup.pnlGroup = New WeifenLuo.WinFormsUI.Docking.DockPanel()
-            '    'frmGroup.pnlGroup.Dock = DockStyle.Fill
-            '    'frmGroup.IsMdiContainer = True
-            '    'conform.Show(frmGroup.pnlGroup, DockState.Document)
-            '    'conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
-            '    Dim subpnl As New WeifenLuo.WinFormsUI.Docking.DockPanel()
+                'Dim frmGroup As New Forms.frmGroupTabs()
 
-            '    subpnl.Dock = DockStyle.Fill
-            '    subpnl.Show()
-            'Else
-            '    conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
-            'End If
+                'frmGroup.Show(App.Runtime.Windows.dockPanel, DockState.Document)
 
+                'conform.Show(frmGroup.pnlGroup, DockState.Document)
+                'conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
+                'Dim subpnl As New WeifenLuo.WinFormsUI.Docking.DockPanel()
+
+                'subpnl.Dock = DockStyle.Fill
+                'subpnl.Show()
+                'conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
+                Dim tc As New TabControl
+                Try
+                    For Each pn As DockPane In App.Runtime.Windows.dockPanel.Panes
+                        If pn.CaptionText = newConnectionInfo.Parent.Name Then
+                            Dim t As String = ""
+                            conform = TryCast(pn.Contents(0), Forms.frmConnections)
+                            tc = TryCast(conform.Controls.Find("tc", False)(0), TabControl)
+                        End If
+                    Next
+                Catch ex As Exception
+
+                End Try
+
+                tc.Name = "tc"
+                tc.Dock = DockStyle.Fill
+
+                Dim tp As New TabPage
+
+                tc.TabPages.Add(tp)
+                conform.Controls.Add(tc)
+                ctrlAddConnection = tp
+                conform.Text = newConnectionInfo.Parent.Name
+                conform.Name = newConnectionInfo.Parent.Name
+            Else
+                ctrlAddConnection = conform
+                ctrlAddConnection.Name = newConnectionInfo.Name
+                'conform = New Forms.frmConnections()
+                'conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
+            End If
             conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
 
-            conform.TabPageContextMenuStrip = conform.cmenTab
+            'conform.TabPageContextMenuStrip = conform.cmenTab
 
             Dim newProtocol As Protocol.Base
             ' Create connection based on protocol type
@@ -1443,12 +1469,12 @@ Namespace App
             If conIcon IsNot Nothing Then
                 conform.Icon = conIcon
             End If
-            conform.Text = newConnectionInfo.Name
+            ctrlAddConnection.Text = newConnectionInfo.Name
             If Not IsNothing(newProtocol.Control) Then
                 newProtocol.Control.Height = conform.Height
                 newProtocol.Control.Width = conform.Width
             End If
-            newProtocol.InterfaceControl = New dRemote.Connection.InterfaceControl(conform, newProtocol, newConnectionInfo)
+            newProtocol.InterfaceControl = New dRemote.Connection.InterfaceControl(ctrlAddConnection, newProtocol, newConnectionInfo)
 
 
             'AddHandler newProtocol.Control.ClientSizeChanged, AddressOf newProtocol.ResizeEnd
@@ -1459,12 +1485,12 @@ Namespace App
 
             'AddHandler conform.FormClosing, AddressOf Prot_Event_FormClosing
 
-            ShowHideMenuButtons(conform, newProtocol)
+            'ShowHideMenuButtons(conform, newProtocol)
             If Not IsNothing(newProtocol.Control) Then
                 newProtocol.Control.Dock = DockStyle.Fill
-                conform.Controls.Add(newProtocol.Control)
+                ctrlAddConnection.Controls.Add(newProtocol.Control)
             Else
-                conform.Controls.Add(newProtocol.InterfaceControl)
+                ctrlAddConnection.Controls.Add(newProtocol.InterfaceControl)
             End If
 
 

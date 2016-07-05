@@ -176,7 +176,6 @@
             'chkGroupTabs
             '
             Me.chkGroupTabs.AutoSize = True
-            Me.chkGroupTabs.Enabled = False
             Me.chkGroupTabs.Location = New System.Drawing.Point(3, 178)
             Me.chkGroupTabs.Name = "chkGroupTabs"
             Me.chkGroupTabs.Size = New System.Drawing.Size(148, 17)
