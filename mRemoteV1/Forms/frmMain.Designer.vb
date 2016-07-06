@@ -136,7 +136,7 @@ Partial Class frmMain
         Me.msMain.Location = New System.Drawing.Point(3, 0)
         Me.msMain.Name = "msMain"
         Me.msMain.Padding = New System.Windows.Forms.Padding(2, 2, 0, 2)
-        Me.msMain.Size = New System.Drawing.Size(290, 24)
+        Me.msMain.Size = New System.Drawing.Size(356, 24)
         Me.msMain.Stretch = False
         Me.msMain.TabIndex = 16
         Me.msMain.Text = "Main Toolbar"
@@ -556,8 +556,8 @@ Partial Class frmMain
         'DRemoteV2BetaToolStripMenuItem
         '
         Me.DRemoteV2BetaToolStripMenuItem.Name = "DRemoteV2BetaToolStripMenuItem"
-        Me.DRemoteV2BetaToolStripMenuItem.Size = New System.Drawing.Size(109, 20)
-        Me.DRemoteV2BetaToolStripMenuItem.Text = "dRemoteV2 Beta!"
+        Me.DRemoteV2BetaToolStripMenuItem.Size = New System.Drawing.Size(83, 20)
+        Me.DRemoteV2BetaToolStripMenuItem.Text = "dRemoteV2!"
         '
         'mMenSep3
         '

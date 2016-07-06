@@ -158,13 +158,14 @@ Namespace Connection
             End Sub
 
             Private Sub CloseBG()
-                If Not IsNothing(Control) AndAlso Control.InvokeRequired Then
-                    Control.Invoke(New Action(AddressOf CloseBG))
-                    Return
-                End If
-                RaiseEvent Closed(Me)
-
                 Try
+                    If Not IsNothing(Control) AndAlso Control.InvokeRequired Then
+                        Control.Invoke(New Action(AddressOf CloseBG))
+                        Return
+                    End If
+
+                    RaiseEvent Closed(Me)
+
                     tmrReconnect.Enabled = False
 
                     If Me._Control IsNot Nothing Then
@@ -201,7 +202,20 @@ Namespace Connection
                                     cW.Select()
                                     ActivateConnection(Windows.dockPanel)
                                 End If
-
+                            ElseIf My.Settings.Beta And Me._interfaceControl.Parent.[GetType]().ToString() = "Crownwood.Magic.Controls.TabPage" Then
+                                Dim tabPage As Crownwood.Magic.Controls.TabPage = CType(Me._interfaceControl.Parent, Crownwood.Magic.Controls.TabPage)
+                                If Not IsNothing(tabPage) AndAlso tabPage.InvokeRequired Then
+                                    tabPage.Invoke(New Action(AddressOf CloseBG))
+                                    Return
+                                End If
+                                Dim tabControl As Crownwood.Magic.Controls.TabControl = CType(tabPage.Parent, Crownwood.Magic.Controls.TabControl)
+                                tabControl.TabPages.Remove(tabPage)
+                                If tabControl.TabPages.Count <= 0 Then
+                                    If tabControl.Parent.[GetType]().ToString() = "dRemote.Forms.frmConnections" Then
+                                        Dim frmConnections As dRemote.Forms.frmConnections = CType(tabControl.Parent, dRemote.Forms.frmConnections)
+                                        frmConnections.Close()
+                                    End If
+                                End If
                             Else
                                 If Me._interfaceControl.Parent.Tag IsNot Nothing Then
                                     Me.SetTagToNothing()

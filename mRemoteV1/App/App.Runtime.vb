@@ -1403,6 +1403,7 @@ Namespace App
                 AddHandler tc.PageDragMove, AddressOf TabController_PageDragMove
                 AddHandler tc.PageDragEnd, AddressOf TabController_PageDragEnd
                 AddHandler tc.PageDragQuit, AddressOf TabController_PageDragEnd
+                AddHandler tc.ClosePressed, AddressOf TabController_ClosePressed
                 tc.Appearance = Magic.Controls.TabControl.VisualAppearance.MultiDocument
 
                 tc.Name = "tc"
@@ -1579,6 +1580,24 @@ Namespace App
             If interfaceControl IsNot Nothing Then interfaceControl.Protocol.Focus()
         End Sub
 
+        Shared Sub TabController_ClosePressed(ByVal sender As Object, ByVal e As System.EventArgs)
+            Dim tabController As Crownwood.Magic.Controls.TabControl = sender
+            If Not IsNothing(tabController.SelectedTab) Then
+                Try
+                    Dim selectedTab As Crownwood.Magic.Controls.TabPage = tabController.SelectedTab
+                    If selectedTab.Tag IsNot Nothing Then
+                        Dim interfaceControl As dRemote.Connection.InterfaceControl = selectedTab.Tag
+                        interfaceControl.Protocol.Close()
+                    Else
+                        tabController.TabPages.Remove(selectedTab)
+                    End If
+                Catch ex As Exception
+                    MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, "UI.Window.Connection.CloseConnectionTab() failed" & vbNewLine & ex.Message, True)
+                End Try
+
+            End If
+
+        End Sub
 
 
         'Shared Sub GotFocus(ByVal sender As System.Object, ByVal e As EventArgs)
@@ -1987,7 +2006,19 @@ Namespace App
         Public Shared Sub Prot_Event_Closed(ByVal sender As Object, e As FormClosedEventArgs)
             If sender.Controls.Count > 0 Then
                 Dim S2 As Object = sender.Controls(0)
-                Prot_Event_Closed(S2.Protocol)
+                If TypeOf S2 Is Crownwood.Magic.Controls.TabControl Then
+                    Dim s As Crownwood.Magic.Controls.TabControl = S2
+                    's.TabPages.Clear()
+                    For Each page As Crownwood.Magic.Controls.TabPage In s.TabPages
+                        s.SelectedTab = page
+                        Dim ea As New System.EventArgs
+                        TabController_ClosePressed(s, ea)
+
+                    Next
+                Else
+                        Prot_Event_Closed(S2.Protocol)
+                End If
+
             End If
 
         End Sub
