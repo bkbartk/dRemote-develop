@@ -17,12 +17,13 @@ Namespace Connection
 #Region "Public Methods"
             Public Sub New(ByVal RenderingEngine As RenderingEngine)
                 Try
-                    If RenderingEngine = RenderingEngine.Gecko Then
-                        Me.Control = New MiniGeckoBrowser.MiniGeckoBrowser
-                        TryCast(Me.Control, MiniGeckoBrowser.MiniGeckoBrowser).XULrunnerPath = My.Settings.XULRunnerPath
-                    Else
-                        Me.Control = New WebBrowser
-                    End If
+                    'If RenderingEngine = RenderingEngine.Gecko Then
+                    '    Me.Control = New MiniGeckoBrowser.MiniGeckoBrowser
+                    '    TryCast(Me.Control, MiniGeckoBrowser.MiniGeckoBrowser).XULrunnerPath = My.Settings.XULRunnerPath
+                    'Else
+                    '    Me.Control = New WebBrowser
+                    'End If
+                    Me.Control = New WebBrowser
 
                     NewExtended()
                 Catch ex As Exception
