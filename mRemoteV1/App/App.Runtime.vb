@@ -1401,6 +1401,7 @@ Namespace App
                 AddHandler tc.PageDragEnd, AddressOf TabController_PageDragEnd
                 AddHandler tc.PageDragQuit, AddressOf TabController_PageDragEnd
                 AddHandler tc.ClosePressed, AddressOf TabController_ClosePressed
+                AddHandler tc.MouseUp, AddressOf TabController_MouseUp
                 tc.Appearance = Magic.Controls.TabControl.VisualAppearance.MultiDocument
 
                 tc.Name = "tc"
@@ -1415,10 +1416,12 @@ Namespace App
                 tp.AllowDrop = True
                 tc.TabPages.Add(tp)
                 conform.Controls.Add(tc)
+                tp.ContextMenuStrip = conform.cmenTab
                 ctrlAddConnection = tp
                 conform.Text = newConnectionInfo.Parent.Name
                 conform.Name = newConnectionInfo.Parent.Name
             Else
+                conform.TabPageContextMenuStrip = conform.cmenTab
                 ctrlAddConnection = conform
                 ctrlAddConnection.Name = newConnectionInfo.Name
                 'conform = New Forms.frmConnections()
@@ -1426,7 +1429,7 @@ Namespace App
             End If
             conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
 
-            conform.TabPageContextMenuStrip = conform.cmenTab
+            'conform.TabPageContextMenuStrip = conform.cmenTab
 
             Dim newProtocol As Protocol.Base
             ' Create connection based on protocol type
@@ -1578,6 +1581,44 @@ Namespace App
         End Sub
 
         Shared Sub TabController_ClosePressed(ByVal sender As Object, ByVal e As System.EventArgs)
+            closetab(sender)
+        End Sub
+        Shared Sub TabController_MouseUp(ByVal sender As Crownwood.Magic.Controls.TabControl, ByVal e As MouseEventArgs)
+            Try
+                'If Not Native.GetForegroundWindow() = frmMain.Handle And Not _ignoreChangeSelectedTabClick Then
+                '    Dim clickedTab As Magic.Controls.TabPage = TabController.TabPageFromPoint(e.Location)
+                '    If clickedTab IsNot Nothing And TabController.SelectedTab IsNot clickedTab Then
+                '        Native.SetForegroundWindow(Handle)
+                '        TabController.SelectedTab = clickedTab
+                '    End If
+                'End If
+                '_ignoreChangeSelectedTabClick = False
+
+                Select Case e.Button
+                    Case MouseButtons.Left
+                        'Dim currentTicks As Integer = Environment.TickCount
+                        'Dim elapsedTicks As Integer = currentTicks - _firstClickTicks
+                        'If elapsedTicks > SystemInformation.DoubleClickTime Or Not _doubleClickRectangle.Contains(MousePosition) Then
+                        '    _firstClickTicks = currentTicks
+                        '    _doubleClickRectangle = New Rectangle(MousePosition.X - (SystemInformation.DoubleClickSize.Width / 2), MousePosition.Y - (SystemInformation.DoubleClickSize.Height / 2), SystemInformation.DoubleClickSize.Width, SystemInformation.DoubleClickSize.Height)
+                        '    FocusIC()
+                        'Else
+                        '    TabController.OnDoubleClickTab(TabController.SelectedTab)
+                        'End If
+                    Case MouseButtons.Middle
+                        closetab(sender)
+                    Case MouseButtons.Right
+                        'ShowHideMenuButtons()
+                        'Native.SetForegroundWindow(Handle)
+                        sender.SelectedTab.ContextMenuStrip.Show(sender.Parent.Location.X + e.Location.X, sender.Parent.Location.Y + e.Location.Y + 15)
+                        'cmenTab.Show(sender, e.Location)
+                End Select
+            Catch ex As Exception
+                MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, "TabController_MouseUp (UI.Window.Connections) failed" & vbNewLine & ex.Message, True)
+            End Try
+        End Sub
+
+        Shared Sub closetab(ByVal sender As Object)
             Dim tabController As Crownwood.Magic.Controls.TabControl = sender
             If Not IsNothing(tabController.SelectedTab) Then
                 Try
@@ -1600,7 +1641,6 @@ Namespace App
                 End Try
 
             End If
-
         End Sub
 
 
