@@ -1381,9 +1381,6 @@ Namespace App
             Dim conIcon As Drawing.Icon = dRemote.Connection.Icon.FromString(newConnectionInfo.Icon)
             If My.Settings.GroupTabs Then
                 Dim tc As New Crownwood.Magic.Controls.TabControl
-
-
-
                 Try
                     For Each pn As DockPane In App.Runtime.Windows.dockPanel.Panes
                         If pn.CaptionText = newConnectionInfo.Parent.Name Then
@@ -1412,7 +1409,6 @@ Namespace App
                 tc.DragOverSelect = True
                 tc.DragFromControl = False
 
-
                 Dim tp As New Crownwood.Magic.Controls.TabPage
                 tp.Title = newConnectionInfo.Name
                 tp.Icon = conIcon
@@ -1430,7 +1426,7 @@ Namespace App
             End If
             conform.Show(App.Runtime.Windows.dockPanel, DockState.Document)
 
-            'conform.TabPageContextMenuStrip = conform.cmenTab
+            conform.TabPageContextMenuStrip = conform.cmenTab
 
             Dim newProtocol As Protocol.Base
             ' Create connection based on protocol type
@@ -1484,7 +1480,6 @@ Namespace App
             End If
             newProtocol.InterfaceControl = New dRemote.Connection.InterfaceControl(ctrlAddConnection, newProtocol, newConnectionInfo)
 
-
             'AddHandler newProtocol.Control.ClientSizeChanged, AddressOf newProtocol.ResizeEnd
             AddHandler conform.Resize, AddressOf newProtocol.ResizeV2
             AddHandler conform.ResizeEnd, AddressOf newProtocol.ResizeEnd
@@ -1493,7 +1488,9 @@ Namespace App
 
             'AddHandler conform.FormClosing, AddressOf Prot_Event_FormClosing
 
-            'ShowHideMenuButtons(conform, newProtocol)
+            ShowHideMenuButtons(conform, newProtocol)
+
+
             If Not IsNothing(newProtocol.Control) Then
                 newProtocol.Control.Dock = DockStyle.Fill
                 ctrlAddConnection.Controls.Add(newProtocol.Control)
@@ -1587,6 +1584,13 @@ Namespace App
                     Dim selectedTab As Crownwood.Magic.Controls.TabPage = tabController.SelectedTab
                     If selectedTab.Tag IsNot Nothing Then
                         Dim interfaceControl As dRemote.Connection.InterfaceControl = selectedTab.Tag
+                        Dim Prot As Connection.Protocol.Base = interfaceControl.Protocol
+
+                        Prot.InterfaceControl.Info.OpenConnections.Remove(Prot)
+
+                        If Prot.InterfaceControl.Info.OpenConnections.Count < 1 And Prot.InterfaceControl.Info.IsQuickConnect = False Then
+                            Tree.Node.SetNodeImage(Prot.InterfaceControl.Info.TreeNode, Images.Enums.TreeImage.ConnectionClosed)
+                        End If
                         interfaceControl.Protocol.Close()
                     Else
                         tabController.TabPages.Remove(selectedTab)
@@ -1643,7 +1647,6 @@ Namespace App
                     Case TypeOf IC.Protocol Is dRemote.Connection.Protocol.PuttyBase
                         conform.cmenTabPuttySettings.Visible = True
                 End Select
-
 
                 AddHandler conform.cmenTabFullscreen.Click, AddressOf newProtocol.ToggleFullscreen
                 AddHandler conform.cmenTabSmartSize.Click, AddressOf newProtocol.ToggleSmartSize

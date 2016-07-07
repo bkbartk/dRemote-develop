@@ -38,7 +38,7 @@ Namespace Forms
             Me.cmenTab.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmenTabFullscreen, Me.cmenTabSmartSize, Me.cmenTabViewOnly, Me.ToolStripSeparator1, Me.cmenTabScreenshot, Me.cmenTabStartChat, Me.cmenTabTransferFile, Me.cmenTabRefreshScreen, Me.cmenTabSendSpecialKeys, Me.cmenTabPuttySettings, Me.cmenTabExternalApps, Me.cmenTabSep1, Me.cmenTabRenameTab, Me.cmenTabReconnect, Me.cmenTabDisconnect})
             Me.cmenTab.Name = "cmenTab"
             Me.cmenTab.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-            Me.cmenTab.Size = New System.Drawing.Size(188, 302)
+            Me.cmenTab.Size = New System.Drawing.Size(188, 324)
             '
             'cmenTabFullscreen
             '
@@ -195,11 +195,6 @@ Namespace Forms
         Friend WithEvents cmenTabRenameTab As ToolStripMenuItem
         Friend WithEvents cmenTabReconnect As ToolStripMenuItem
         Friend WithEvents cmenTabDisconnect As ToolStripMenuItem
-
-        Private Sub frmConnections_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        End Sub
-
 
         'Private Sub frmConnections_GotFocus(sender As Object, e As EventArgs) Handles Me.GotFocus
         '    If sender.controls.count > 0 Then

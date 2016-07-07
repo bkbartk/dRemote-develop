@@ -267,7 +267,7 @@ Public Class frmMainV2
             If cW.Controls.Count > 0 Then
                 Dim ctrl As Control = cW.Controls(0)
                 Dim ifc As Connection.InterfaceControl = TryCast(ctrl, Connection.InterfaceControl)
-                If Not IsNothing(ifc) Then
+                If Not IsNothing(ifc) AndAlso TypeOf ifc.Protocol Is dRemote.Connection.Protocol.PuttyBase Then
                     ifc.Protocol.Focus()
                 End If
 
