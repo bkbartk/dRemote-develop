@@ -261,13 +261,14 @@ Public Class frmMainV2
         System.Windows.Forms.Application.Exit()
     End Sub
 
-    Private Sub ActivateConnection()
+    Private Sub ActivateConnection(ByRef sender As Object)
         If TypeOf DockPanel1.ActiveDocument Is dRemote.Forms.frmConnections Then
             Dim cW As dRemote.Forms.frmConnections = DockPanel1.ActiveDocument
             If cW.Controls.Count > 0 Then
                 Dim ctrl As Control = cW.Controls(0)
                 Dim ifc As Connection.InterfaceControl = TryCast(ctrl, Connection.InterfaceControl)
                 If Not IsNothing(ifc) AndAlso TypeOf ifc.Protocol Is dRemote.Connection.Protocol.PuttyBase Then
+                    sender.ActiveDocument.Select()
                     ifc.Protocol.Focus()
                 End If
 
@@ -276,11 +277,11 @@ Public Class frmMainV2
     End Sub
 
     Private Sub pnlDock_ActiveDocumentChanged(ByVal sender As Object, ByVal e As EventArgs) Handles DockPanel1.ActivePaneChanged
-        If Not IsNothing(sender.ActiveDocument) AndAlso sender.ActiveDocument.controls.count > 0 Then
-            sender.ActiveDocument.Select()
-        End If
+        'If Not IsNothing(sender.ActiveDocument) AndAlso sender.ActiveDocument.controls.count > 0 Then
+        '    sender.ActiveDocument.Select()
+        'End If
 
-        ActivateConnection()
+        ActivateConnection(sender)
 
     End Sub
 

@@ -1418,10 +1418,15 @@ Namespace App
                 conform.Controls.Add(tc)
                 tp.ContextMenuStrip = conform.cmenTab
                 ctrlAddConnection = tp
-                conform.Text = newConnectionInfo.Parent.Name
-                conform.Name = newConnectionInfo.Parent.Name
+                If Not IsNothing(newConnectionInfo.Parent) Then
+                    conform.Text = newConnectionInfo.Parent.Name
+                    conform.Name = newConnectionInfo.Parent.Name
+                Else
+                    conform.Text = newConnectionInfo.Name
+                    conform.Name = newConnectionInfo.Name
+                End If
             Else
-                conform.TabPageContextMenuStrip = conform.cmenTab
+                    conform.TabPageContextMenuStrip = conform.cmenTab
                 ctrlAddConnection = conform
                 ctrlAddConnection.Name = newConnectionInfo.Name
                 'conform = New Forms.frmConnections()

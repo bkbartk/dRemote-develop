@@ -503,16 +503,23 @@ Namespace UI
 
 #Region "Tree Context Menu"
             Private Shared Sub mMenFileLoad_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles mMenFileLoad.Click
-                If IsConnectionsFileLoaded Then
-                    Select Case MsgBox(Language.strSaveConnectionsFileBeforeOpeningAnother, MsgBoxStyle.YesNoCancel Or MsgBoxStyle.Question)
-                        Case MsgBoxResult.Yes
-                            SaveConnections()
-                        Case MsgBoxResult.Cancel
-                            Return
-                    End Select
+                If Not My.Settings.UseSQLServer Then
+
+
+                    If IsConnectionsFileLoaded Then
+                        Select Case MsgBox(Language.strSaveConnectionsFileBeforeOpeningAnother, MsgBoxStyle.YesNoCancel Or MsgBoxStyle.Question)
+                            Case MsgBoxResult.Yes
+                                SaveConnections()
+                            Case MsgBoxResult.Cancel
+                                Return
+                        End Select
+                    End If
+
+                    LoadConnections(True)
+                Else
+                    MsgBox("Cannot open connectionfile when dRemote is connected to SQL", MsgBoxStyle.OkOnly)
                 End If
 
-                LoadConnections(True)
             End Sub
             Private Sub cMenTreeAddConnection_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles cMenTreeAddConnection.Click
                 AddConnection()
