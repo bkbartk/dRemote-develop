@@ -566,12 +566,6 @@
     <Setting Name="QuickConnectProtocol" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)">RDP</Value>
     </Setting>
-    <Setting Name="KeysPreviousTab" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.String" Scope="User">
-      <Value Profile="(Default)">9/9, 33/8</Value>
-    </Setting>
-    <Setting Name="KeysNextTab" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.String" Scope="User">
-      <Value Profile="(Default)">9/8, 34/8</Value>
-    </Setting>
     <Setting Name="Inherit" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.String" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>

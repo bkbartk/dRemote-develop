@@ -156,7 +156,6 @@ Public Class frmMain
 
         Me.Opacity = 1
 
-        KeyboardShortcuts.RequestKeyNotifications(Handle)
         brows = New WebBrowser
 
         brows.ScriptErrorsSuppressed = True
@@ -962,15 +961,7 @@ Public Class frmMain
                     'Send to the next window
                     SendMessage(fpChainedWindowHandle, m.Msg, m.LParam, m.WParam)
                     fpChainedWindowHandle = m.LParam
-                Case KeyboardHook.HookKeyMsg
-                    If Not m.WParam.ToInt32() = Win32.WM_KEYDOWN Then Exit Select
 
-                    Select Case KeyboardShortcuts.CommandFromHookKeyMessage(m)
-                        Case ShortcutCommand.PreviousTab
-                            SelectTabRelative(-1)
-                        Case ShortcutCommand.NextTab
-                            SelectTabRelative(1)
-                    End Select
             End Select
             MyBase.WndProc(m)
         Catch ex As Exception

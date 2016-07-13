@@ -297,7 +297,6 @@
     <Compile Include="Controls\ToolStripSplitButton.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="App\Config\KeyboardShortcuts.vb" />
     <Compile Include="Forms\frmConnections.Designer.vb">
       <DependentUpon>frmConnections.vb</DependentUpon>
     </Compile>
@@ -333,12 +332,6 @@
     </Compile>
     <Compile Include="Forms\OptionsForm.vb">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\OptionsPages\KeyboardPage.Designer.vb">
-      <DependentUpon>KeyboardPage.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\OptionsPages\KeyboardPage.vb">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\OptionsPages\OptionsPage.vb">
       <SubType>UserControl</SubType>
@@ -582,9 +575,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OptionsForm.resx">
       <DependentUpon>OptionsForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\OptionsPages\KeyboardPage.resx">
-      <DependentUpon>KeyboardPage.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\OptionsPages\SqlServerPage.resx">
       <DependentUpon>SqlServerPage.vb</DependentUpon>
@@ -1178,10 +1168,6 @@
     <ProjectReference Include="..\ActiveButtons.Net-master\Source\ActiveButtons.csproj">
       <Project>{16985406-9d78-4817-8485-ea2bd2814ba4}</Project>
       <Name>ActiveButtons</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SharedLibraryNG\SharedLibraryNG.csproj">
-      <Project>{0F615504-5F30-4CF2-8341-1DE7FEC95A23}</Project>
-      <Name>SharedLibraryNG</Name>
     </ProjectReference>
     <ProjectReference Include="..\WinFormsUI\ThemeVS2013Blue.csproj">
       <Project>{245e07f6-10d5-4cfa-b003-0deb06b223da}</Project>
