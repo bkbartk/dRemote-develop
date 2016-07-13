@@ -2585,6 +2585,19 @@ Namespace My
                 Me("mRemoteNGCompatible") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Configuration.SettingsProviderAttribute(GetType(dRemote.Config.Settings.Providers.ChooseProvider)),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property GroupTabsDepend() As String
+            Get
+                Return CType(Me("GroupTabsDepend"),String)
+            End Get
+            Set
+                Me("GroupTabsDepend") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

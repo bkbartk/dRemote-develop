@@ -39,6 +39,11 @@
             Me.chkShowProtocolOnTabs = New System.Windows.Forms.CheckBox()
             Me.chkEachNewPanelTab = New System.Windows.Forms.CheckBox()
             Me.chkGroupTabs = New System.Windows.Forms.CheckBox()
+            Me.gbGroupTabs = New System.Windows.Forms.GroupBox()
+            Me.rbPanel = New System.Windows.Forms.RadioButton()
+            Me.rbChild = New System.Windows.Forms.RadioButton()
+            Me.rbParent = New System.Windows.Forms.RadioButton()
+            Me.gbGroupTabs.SuspendLayout()
             Me.SuspendLayout()
             '
             'chkAlwaysShowPanelTabs
@@ -64,7 +69,7 @@
             'chkUseOnlyErrorsAndInfosPanel
             '
             Me.chkUseOnlyErrorsAndInfosPanel.AutoSize = True
-            Me.chkUseOnlyErrorsAndInfosPanel.Location = New System.Drawing.Point(3, 223)
+            Me.chkUseOnlyErrorsAndInfosPanel.Location = New System.Drawing.Point(3, 238)
             Me.chkUseOnlyErrorsAndInfosPanel.Name = "chkUseOnlyErrorsAndInfosPanel"
             Me.chkUseOnlyErrorsAndInfosPanel.Size = New System.Drawing.Size(278, 17)
             Me.chkUseOnlyErrorsAndInfosPanel.TabIndex = 19
@@ -84,7 +89,7 @@
             'lblSwitchToErrorsAndInfos
             '
             Me.lblSwitchToErrorsAndInfos.AutoSize = True
-            Me.lblSwitchToErrorsAndInfos.Location = New System.Drawing.Point(3, 248)
+            Me.lblSwitchToErrorsAndInfos.Location = New System.Drawing.Point(3, 263)
             Me.lblSwitchToErrorsAndInfos.Name = "lblSwitchToErrorsAndInfos"
             Me.lblSwitchToErrorsAndInfos.Size = New System.Drawing.Size(159, 13)
             Me.lblSwitchToErrorsAndInfos.TabIndex = 20
@@ -104,7 +109,7 @@
             '
             Me.chkMCInformation.AutoSize = True
             Me.chkMCInformation.Enabled = False
-            Me.chkMCInformation.Location = New System.Drawing.Point(19, 268)
+            Me.chkMCInformation.Location = New System.Drawing.Point(19, 283)
             Me.chkMCInformation.Name = "chkMCInformation"
             Me.chkMCInformation.Size = New System.Drawing.Size(83, 17)
             Me.chkMCInformation.TabIndex = 21
@@ -125,7 +130,7 @@
             '
             Me.chkMCErrors.AutoSize = True
             Me.chkMCErrors.Enabled = False
-            Me.chkMCErrors.Location = New System.Drawing.Point(19, 314)
+            Me.chkMCErrors.Location = New System.Drawing.Point(19, 329)
             Me.chkMCErrors.Name = "chkMCErrors"
             Me.chkMCErrors.Size = New System.Drawing.Size(53, 17)
             Me.chkMCErrors.TabIndex = 23
@@ -146,7 +151,7 @@
             '
             Me.chkMCWarnings.AutoSize = True
             Me.chkMCWarnings.Enabled = False
-            Me.chkMCWarnings.Location = New System.Drawing.Point(19, 291)
+            Me.chkMCWarnings.Location = New System.Drawing.Point(19, 306)
             Me.chkMCWarnings.Name = "chkMCWarnings"
             Me.chkMCWarnings.Size = New System.Drawing.Size(71, 17)
             Me.chkMCWarnings.TabIndex = 22
@@ -183,10 +188,57 @@
             Me.chkGroupTabs.Text = "Group Tabs (New Layout)"
             Me.chkGroupTabs.UseVisualStyleBackColor = True
             '
+            'gbGroupTabs
+            '
+            Me.gbGroupTabs.Controls.Add(Me.rbPanel)
+            Me.gbGroupTabs.Controls.Add(Me.rbChild)
+            Me.gbGroupTabs.Controls.Add(Me.rbParent)
+            Me.gbGroupTabs.Location = New System.Drawing.Point(157, 178)
+            Me.gbGroupTabs.Name = "gbGroupTabs"
+            Me.gbGroupTabs.Size = New System.Drawing.Size(392, 39)
+            Me.gbGroupTabs.TabIndex = 26
+            Me.gbGroupTabs.TabStop = False
+            Me.gbGroupTabs.Text = "Group tabs based on:"
+            Me.gbGroupTabs.Visible = False
+            '
+            'rbPanel
+            '
+            Me.rbPanel.AutoSize = True
+            Me.rbPanel.Location = New System.Drawing.Point(246, 16)
+            Me.rbPanel.Name = "rbPanel"
+            Me.rbPanel.Size = New System.Drawing.Size(122, 17)
+            Me.rbPanel.TabIndex = 2
+            Me.rbPanel.TabStop = True
+            Me.rbPanel.Text = "Panel (classic mode)"
+            Me.rbPanel.UseVisualStyleBackColor = True
+            '
+            'rbChild
+            '
+            Me.rbChild.AutoSize = True
+            Me.rbChild.Location = New System.Drawing.Point(128, 16)
+            Me.rbChild.Name = "rbChild"
+            Me.rbChild.Size = New System.Drawing.Size(77, 17)
+            Me.rbChild.TabIndex = 1
+            Me.rbChild.TabStop = True
+            Me.rbChild.Text = "Child folder"
+            Me.rbChild.UseVisualStyleBackColor = True
+            '
+            'rbParent
+            '
+            Me.rbParent.AutoSize = True
+            Me.rbParent.Location = New System.Drawing.Point(6, 16)
+            Me.rbParent.Name = "rbParent"
+            Me.rbParent.Size = New System.Drawing.Size(85, 17)
+            Me.rbParent.TabIndex = 0
+            Me.rbParent.TabStop = True
+            Me.rbParent.Text = "Parent folder"
+            Me.rbParent.UseVisualStyleBackColor = True
+            '
             'TabsPanelsPage
             '
             Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
             Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+            Me.Controls.Add(Me.gbGroupTabs)
             Me.Controls.Add(Me.chkGroupTabs)
             Me.Controls.Add(Me.chkEachNewPanelTab)
             Me.Controls.Add(Me.chkAlwaysShowPanelTabs)
@@ -204,6 +256,8 @@
             Me.Name = "TabsPanelsPage"
             Me.PageIcon = CType(resources.GetObject("$this.PageIcon"), System.Drawing.Icon)
             Me.Size = New System.Drawing.Size(610, 489)
+            Me.gbGroupTabs.ResumeLayout(False)
+            Me.gbGroupTabs.PerformLayout()
             Me.ResumeLayout(False)
             Me.PerformLayout()
 
@@ -222,5 +276,9 @@
         Friend WithEvents chkShowProtocolOnTabs As System.Windows.Forms.CheckBox
         Friend WithEvents chkEachNewPanelTab As CheckBox
         Friend WithEvents chkGroupTabs As CheckBox
+        Friend WithEvents gbGroupTabs As GroupBox
+        Friend WithEvents rbChild As RadioButton
+        Friend WithEvents rbParent As RadioButton
+        Friend WithEvents rbPanel As RadioButton
     End Class
 End Namespace

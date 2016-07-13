@@ -1418,13 +1418,26 @@ Namespace App
                 conform.Controls.Add(tc)
                 tp.ContextMenuStrip = conform.cmenTab
                 ctrlAddConnection = tp
-                If Not IsNothing(newConnectionInfo.Parent) Then
-                    conform.Text = newConnectionInfo.Parent.Name
-                    conform.Name = newConnectionInfo.Parent.Name
-                Else
-                    conform.Text = newConnectionInfo.Name
-                    conform.Name = newConnectionInfo.Name
-                End If
+                Dim groupname As String = newConnectionInfo.Name
+
+                Select Case My.Settings.GroupTabsDepend
+                    Case "parent"
+                        Dim parentfolder As Object = newConnectionInfo
+                        While Not IsNothing(parentfolder)
+                            groupname = parentfolder.Name
+                            parentfolder = parentfolder.Parent
+                        End While
+
+                    Case "child"
+                        If Not IsNothing(newConnectionInfo.Parent) Then
+                            groupname = newConnectionInfo.Name
+                        End If
+                    Case "panel"
+                        groupname = newConnectionInfo.Panel
+                End Select
+
+                conform.Text = groupname
+                conform.Name = groupname
             Else
                     conform.TabPageContextMenuStrip = conform.cmenTab
                 ctrlAddConnection = conform

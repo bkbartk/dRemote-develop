@@ -40,6 +40,16 @@ Namespace Forms.OptionsPages
             chkDoubleClickClosesTab.Checked = Settings.DoubleClickOnTabClosesIt
             chkAlwaysShowPanelSelectionDlg.Checked = Settings.AlwaysShowPanelSelectionDlg
             chkGroupTabs.Checked = Settings.GroupTabs
+            gbGroupTabs.Visible = chkGroupTabs.Checked
+
+            Select Case Settings.GroupTabsDepend
+                Case "parent"
+                    rbParent.Checked = True
+                Case "child"
+                    rbChild.Checked = True
+                Case "panel"
+                    rbPanel.Checked = True
+            End Select
 
             chkUseOnlyErrorsAndInfosPanel.Checked = Settings.ShowNoMessageBoxes
             chkMCInformation.Checked = Settings.SwitchToMCOnInformation
@@ -61,6 +71,16 @@ Namespace Forms.OptionsPages
             Settings.DoubleClickOnTabClosesIt = chkDoubleClickClosesTab.Checked
             Settings.AlwaysShowPanelSelectionDlg = chkAlwaysShowPanelSelectionDlg.Checked
             Settings.GroupTabs = chkGroupTabs.Checked
+            Dim GroupTabsDepend As String = ""
+            Select Case True
+                Case rbParent.Checked
+                    GroupTabsDepend = "parent"
+                Case rbChild.Checked
+                    GroupTabsDepend = "child"
+                Case rbPanel.Checked
+                    GroupTabsDepend = "panel"
+            End Select
+            Settings.GroupTabsDepend = GroupTabsDepend
 
             Settings.ShowNoMessageBoxes = chkUseOnlyErrorsAndInfosPanel.Checked
             Settings.SwitchToMCOnInformation = chkMCInformation.Checked
@@ -73,6 +93,10 @@ Namespace Forms.OptionsPages
             chkMCInformation.Enabled = chkUseOnlyErrorsAndInfosPanel.Checked
             chkMCWarnings.Enabled = chkUseOnlyErrorsAndInfosPanel.Checked
             chkMCErrors.Enabled = chkUseOnlyErrorsAndInfosPanel.Checked
+        End Sub
+
+        Private Sub chkGroupTabs_CheckedChanged(sender As Object, e As EventArgs) Handles chkGroupTabs.CheckedChanged
+            gbGroupTabs.Visible = chkGroupTabs.Checked
         End Sub
 
     End Class
