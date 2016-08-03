@@ -107,6 +107,11 @@ Public Class frmMainV2
         '    Threading.Thread.Sleep(500)
         '    System.Windows.Forms.Application.Restart()
         'End If
+
+
+        Me.Location = My.Settings.MainFormLocation
+        Me.Size = My.Settings.MainFormSize
+        Me.WindowState = My.Settings.MainFormState
         Dim menu As IActiveMenu = ActiveMenu.GetInstance(Me)
 
         Dim mnubutton As New ActiveButton()
@@ -252,6 +257,10 @@ Public Class frmMainV2
         '        Return
         'End Select
         'SaveConnections()
+        My.Settings.MainFormLocation = Me.Location
+        My.Settings.MainFormSize = Me.Size
+        My.Settings.MainFormState = Me.WindowState
+        My.Settings.Save()
         SavePanelsToXML()
         If NotificationAreaIcon IsNot Nothing Then
             If NotificationAreaIcon.Disposed = False Then

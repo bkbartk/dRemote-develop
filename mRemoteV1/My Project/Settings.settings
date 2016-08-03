@@ -9,7 +9,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="MainFormState" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.Windows.Forms.FormWindowState" Scope="User">
-      <Value Profile="(Default)">Normal</Value>
+      <Value Profile="(Default)">Maximized</Value>
     </Setting>
     <Setting Name="MainFormKiosk" Provider="dRemote.Config.Settings.Providers.ChooseProvider" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

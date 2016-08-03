@@ -81,7 +81,7 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Configuration.SettingsProviderAttribute(GetType(dRemote.Config.Settings.Providers.ChooseProvider)),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Normal")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Maximized")>  _
         Public Property MainFormState() As Global.System.Windows.Forms.FormWindowState
             Get
                 Return CType(Me("MainFormState"),Global.System.Windows.Forms.FormWindowState)
