@@ -338,7 +338,9 @@ Namespace Tree
                         Else
                             If MsgBox(String.Format(My.Language.strConfirmDeleteNodeFolderNotEmpty, SelectedNode.Text), MsgBoxStyle.YesNo Or MsgBoxStyle.Question) = MsgBoxResult.Yes Then
                                 For Each tNode As TreeNode In SelectedNode.Nodes
-                                    tNode.Remove()
+                                    If Not IsNothing(tNode) Then
+                                        tNode.Remove()
+                                    End If
                                 Next
                                 SelectedNode.Remove()
                             End If
@@ -354,8 +356,12 @@ Namespace Tree
                             SelectedNode.Remove()
                         End If
                     Case Else
-                        MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "Tree item type is unknown so it cannot be deleted!")
+                        If MsgBox(String.Format(My.Language.strConfirmDeleteNodeFolder, SelectedNode.Text), MsgBoxStyle.YesNo Or MsgBoxStyle.Question) = MsgBoxResult.Yes Then
+                            SelectedNode.Remove()
+                        End If
+                        'MessageCollector.AddMessage(Messages.MessageClass.WarningMsg, "Tree item type is unknown so it cannot be deleted!")
                 End Select
+                App.Runtime.SaveConnections()
             Catch ex As Exception
                 MessageCollector.AddMessage(Messages.MessageClass.ErrorMsg, "Deleting selected node failed" & vbNewLine & ex.Message, True)
             End Try
@@ -378,6 +384,7 @@ Namespace Tree
                     End If
                 End If
             End If
+            App.Runtime.SaveConnections()
         End Sub
 
         Public Shared Sub MoveNodeUp()
@@ -393,6 +400,7 @@ Namespace Tree
                         SelectedNode = newNode
 
                         TreeView.EndUpdate()
+                        App.Runtime.SaveConnections()
                     End If
                 End If
             Catch ex As Exception
