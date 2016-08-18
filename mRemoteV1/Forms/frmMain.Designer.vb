@@ -136,7 +136,7 @@ Partial Class frmMain
         Me.msMain.Location = New System.Drawing.Point(3, 0)
         Me.msMain.Name = "msMain"
         Me.msMain.Padding = New System.Windows.Forms.Padding(2, 2, 0, 2)
-        Me.msMain.Size = New System.Drawing.Size(356, 24)
+        Me.msMain.Size = New System.Drawing.Size(264, 24)
         Me.msMain.Stretch = False
         Me.msMain.TabIndex = 16
         Me.msMain.Text = "Main Toolbar"
@@ -665,7 +665,7 @@ Partial Class frmMain
         Me.tsExternalTools.Location = New System.Drawing.Point(39, 49)
         Me.tsExternalTools.MaximumSize = New System.Drawing.Size(0, 25)
         Me.tsExternalTools.Name = "tsExternalTools"
-        Me.tsExternalTools.Size = New System.Drawing.Size(111, 25)
+        Me.tsExternalTools.Size = New System.Drawing.Size(43, 25)
         Me.tsExternalTools.TabIndex = 17
         '
         'cMenExtAppsToolbar

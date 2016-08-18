@@ -39,6 +39,7 @@ Partial Class frmMainV2
         Me.mMenToolsUpdate = New System.Windows.Forms.ToolStripMenuItem()
         Me.mMenToolsOptions = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmenTabSep1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.mMenViewFullscreen = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnAmout = New System.Windows.Forms.ToolStripMenuItem()
         Me.DockPanel1 = New WeifenLuo.WinFormsUI.Docking.DockPanel()
         Me.VS2013BlueTheme2 = New WeifenLuo.WinFormsUI.Docking.VS2013BlueTheme()
@@ -47,10 +48,10 @@ Partial Class frmMainV2
         '
         'mainMenu
         '
-        Me.mainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsToolStripMenuItem, Me.cMenLayout, Me.mMenToolsUpdate, Me.mMenToolsOptions, Me.cmenTabSep1, Me.btnAmout})
+        Me.mainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsToolStripMenuItem, Me.cMenLayout, Me.mMenToolsUpdate, Me.mMenToolsOptions, Me.cmenTabSep1, Me.mMenViewFullscreen, Me.btnAmout})
         Me.mainMenu.Name = "cmenTab"
         Me.mainMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mainMenu.Size = New System.Drawing.Size(172, 120)
+        Me.mainMenu.Size = New System.Drawing.Size(172, 164)
         Me.mainMenu.Text = "File"
         '
         'ToolsToolStripMenuItem
@@ -58,7 +59,7 @@ Partial Class frmMainV2
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mMenToolsSSHTransfer, Me.mMenToolsUVNCSC, Me.mMenToolsExternalApps, Me.mMenToolsPortScan})
         Me.ToolsToolStripMenuItem.Image = Global.dRemote.My.Resources.Resources.Options
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.ToolsToolStripMenuItem.Text = "Tools"
         '
         'mMenToolsSSHTransfer
@@ -95,7 +96,7 @@ Partial Class frmMainV2
         Me.cMenLayout.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mMenViewResetLayout, Me.mMenViewConnections, Me.mMenViewConfig, Me.mMenViewQuickConnectToolbar, Me.mMenViewErrorsAndInfos})
         Me.cMenLayout.Image = Global.dRemote.My.Resources.Resources.Panels
         Me.cMenLayout.Name = "cMenLayout"
-        Me.cMenLayout.Size = New System.Drawing.Size(171, 22)
+        Me.cMenLayout.Size = New System.Drawing.Size(179, 22)
         Me.cMenLayout.Text = "Layout"
         '
         'mMenViewResetLayout
@@ -143,26 +144,33 @@ Partial Class frmMainV2
         '
         Me.mMenToolsUpdate.Image = Global.dRemote.My.Resources.Resources.Update
         Me.mMenToolsUpdate.Name = "mMenToolsUpdate"
-        Me.mMenToolsUpdate.Size = New System.Drawing.Size(171, 22)
+        Me.mMenToolsUpdate.Size = New System.Drawing.Size(179, 22)
         Me.mMenToolsUpdate.Text = "Check for Updates"
         '
         'mMenToolsOptions
         '
         Me.mMenToolsOptions.Image = Global.dRemote.My.Resources.Resources.Config
         Me.mMenToolsOptions.Name = "mMenToolsOptions"
-        Me.mMenToolsOptions.Size = New System.Drawing.Size(171, 22)
+        Me.mMenToolsOptions.Size = New System.Drawing.Size(179, 22)
         Me.mMenToolsOptions.Text = "Options"
         '
         'cmenTabSep1
         '
         Me.cmenTabSep1.Name = "cmenTabSep1"
-        Me.cmenTabSep1.Size = New System.Drawing.Size(168, 6)
+        Me.cmenTabSep1.Size = New System.Drawing.Size(176, 6)
+        '
+        'mMenViewFullscreen
+        '
+        Me.mMenViewFullscreen.Image = Global.dRemote.My.Resources.Resources.arrow_out
+        Me.mMenViewFullscreen.Name = "mMenViewFullscreen"
+        Me.mMenViewFullscreen.Size = New System.Drawing.Size(171, 22)
+        Me.mMenViewFullscreen.Text = "Full Screen"
         '
         'btnAmout
         '
         Me.btnAmout.Image = Global.dRemote.My.Resources.Resources.Help
         Me.btnAmout.Name = "btnAmout"
-        Me.btnAmout.Size = New System.Drawing.Size(171, 22)
+        Me.btnAmout.Size = New System.Drawing.Size(179, 22)
         Me.btnAmout.Text = "About"
         '
         'DockPanel1
@@ -174,7 +182,6 @@ Partial Class frmMainV2
         Me.DockPanel1.ShowDocumentIcon = True
         Me.DockPanel1.Size = New System.Drawing.Size(664, 383)
         Me.DockPanel1.TabIndex = 0
-        Me.DockPanel1.Theme = Me.VS2013BlueTheme2
         '
         'frmMainV2
         '
@@ -211,4 +218,5 @@ Partial Class frmMainV2
     Friend WithEvents mMenToolsSSHTransfer As ToolStripMenuItem
     Friend WithEvents mMenViewQuickConnectToolbar As ToolStripMenuItem
     Friend WithEvents mMenViewErrorsAndInfos As ToolStripMenuItem
+    Friend WithEvents mMenViewFullscreen As ToolStripMenuItem
 End Class

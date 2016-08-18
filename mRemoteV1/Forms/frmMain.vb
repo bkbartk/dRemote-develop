@@ -1125,5 +1125,9 @@ Public Class frmMain
         End If
     End Sub
 
+    Private Sub tsExternalTools_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles tsExternalTools.ItemClicked
+
+    End Sub
+
 #End Region
 End Class
