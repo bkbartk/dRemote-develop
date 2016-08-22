@@ -125,9 +125,14 @@ Namespace Security
         'End Sub 'Main
 
         Shared Function EncryptStringToBytes_Aes(ByVal plainText As String, ByVal masterkey As String) As String
-            While masterkey.Length < 16
+            While masterkey.Length < 8
                 masterkey &= " "
             End While
+            If masterkey.Length > 8 Then
+                While masterkey.Length < 16
+                    masterkey &= " "
+                End While
+            End If
             Dim Key() As Byte = System.Text.Encoding.Unicode.GetBytes(Left(masterkey, 16))
             Dim IV() As Byte = System.Text.Encoding.Unicode.GetBytes(Left(masterkey, 8))
 
@@ -175,9 +180,14 @@ Namespace Security
         Shared Function DecryptStringFromBytes_Aes(ByVal encrypted As String, ByVal masterkey As String) As String
             Dim plaintext As String = Nothing
             Try
-                While masterkey.Length < 16
+                While masterkey.Length < 8
                     masterkey &= " "
                 End While
+                If masterkey.Length > 8 Then
+                    While masterkey.Length < 16
+                        masterkey &= " "
+                    End While
+                End If
                 Dim cipherText As Byte() = Convert.FromBase64String(encrypted)
                 Dim Key() As Byte = System.Text.Encoding.Unicode.GetBytes(Left(masterkey, 16))
                 Dim IV() As Byte = System.Text.Encoding.Unicode.GetBytes(Left(masterkey, 8))
