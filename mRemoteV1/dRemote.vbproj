@@ -168,16 +168,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\ADTree.dll</HintPath>
     </Reference>
-    <Reference Include="AxInterop.WFICALib">
-      <HintPath>C:\Program Files (x86)\mRemoteNG\AxInterop.WFICALib.dll</HintPath>
+    <Reference Include="AxInterop.WFICALib, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\AxInterop.WFICALib.dll</HintPath>
     </Reference>
     <Reference Include="AxMSTSCLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\AxMSTSCLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DiffieHellman, Version=0.0.0.0, Culture=neutral">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>References\DiffieHellman.dll</HintPath>
     </Reference>
     <Reference Include="FilteredPropertyGrid, Version=1.0.2258.31541, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -188,9 +185,15 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
       <HintPath>References\Interop.EOLWTSCOM.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.WFICALib">
-      <HintPath>C:\Program Files (x86)\mRemoteNG\Interop.WFICALib.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Interop.SHDocVw, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>References\Interop.SHDocVw.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.WFICALib, Version=2.8.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>References\Interop.WFICALib.dll</HintPath>
     </Reference>
     <Reference Include="IPTextBox, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -805,10 +808,12 @@
     <Content Include="References\eolwtscom.dll" />
     <Content Include="References\FilteredPropertyGrid.dll" />
     <Content Include="References\Interop.EOLWTSCOM.dll" />
+    <Content Include="References\Interop.SHDocVw.dll" />
     <Content Include="References\Interop.WFICALib.dll" />
     <Content Include="References\IPTextBox.dll" />
     <Content Include="References\log4net.dll" />
     <Content Include="References\MagicLibrary.dll" />
+    <Content Include="References\MiniGeckoBrowser.dll" />
     <Content Include="References\MiniTabControl.dll" />
     <Content Include="References\MSTSCLib.dll" />
     <Content Include="References\Org.Mentalis.Security.dll" />
@@ -1141,14 +1146,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="SHDocVw">
-      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>1</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>2</VersionMajor>

@@ -22,6 +22,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_02D2007B34D18F64214F84639BE8D490"
+        "OwnerKey" = "8:_478AC4CBC50247FAB044ED806302504A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0A703246583A46FA883C503EB5ED2FD7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -94,12 +100,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_36FC45675E20403E907439F91DD7AD8C"
-        "OwnerKey" = "8:_478AC4CBC50247FAB044ED806302504A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_384235E2AD3D40E4A34A6F66ADF4D075"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -114,18 +114,6 @@
         {
         "MsmKey" = "8:_478AC4CBC50247FAB044ED806302504A"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4DEBEFB5BAEB04AC5783A599F48534BC"
-        "OwnerKey" = "8:_36FC45675E20403E907439F91DD7AD8C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4DEBEFB5BAEB04AC5783A599F48534BC"
-        "OwnerKey" = "8:_478AC4CBC50247FAB044ED806302504A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,32 +148,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_650D198B9524A2EDCFE0210B9A181340"
-        "OwnerKey" = "8:_478AC4CBC50247FAB044ED806302504A"
+        "MsmKey" = "8:_6DB5C299DB562226D2960F913C3820AB"
+        "OwnerKey" = "8:_DE87D7CDE9BFFF7F2A7C959B5A5017A7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_650D198B9524A2EDCFE0210B9A181340"
-        "OwnerKey" = "8:_7B639E76EEA976E60EAA471FE37B0C5F"
+        "MsmKey" = "8:_6DB5C299DB562226D2960F913C3820AB"
+        "OwnerKey" = "8:_478AC4CBC50247FAB044ED806302504A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_72CF16BCF56F4A1BB923AEEB51D4852C"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7B639E76EEA976E60EAA471FE37B0C5F"
-        "OwnerKey" = "8:_DFB7B91882CFBC05EB0E1B621FD369AD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7B639E76EEA976E60EAA471FE37B0C5F"
-        "OwnerKey" = "8:_478AC4CBC50247FAB044ED806302504A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -346,7 +322,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DFB7B91882CFBC05EB0E1B621FD369AD"
+        "MsmKey" = "8:_DE87D7CDE9BFFF7F2A7C959B5A5017A7"
         "OwnerKey" = "8:_478AC4CBC50247FAB044ED806302504A"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -383,7 +359,7 @@
         "Entry"
         {
         "MsmKey" = "8:_EA1BF5684492C71815B802010E6250C1"
-        "OwnerKey" = "8:_36FC45675E20403E907439F91DD7AD8C"
+        "OwnerKey" = "8:_DE87D7CDE9BFFF7F2A7C959B5A5017A7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -414,6 +390,12 @@
         {
         "MsmKey" = "8:_F92686DF72164EBAA3DB4433AD1DADC0"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_02D2007B34D18F64214F84639BE8D490"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -456,6 +438,24 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A8877E897010BAD86E2BD2732BA44D5C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_DE87D7CDE9BFFF7F2A7C959B5A5017A7"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6DB5C299DB562226D2960F913C3820AB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_EA1BF5684492C71815B802010E6250C1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -509,18 +509,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DFB7B91882CFBC05EB0E1B621FD369AD"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7B639E76EEA976E60EAA471FE37B0C5F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_576F97B35ECCF25478B61D05889D7E26"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -533,31 +521,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_36FC45675E20403E907439F91DD7AD8C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EA1BF5684492C71815B802010E6250C1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4DEBEFB5BAEB04AC5783A599F48534BC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E7EDDDD45EC4C9CBD3E192D9B30D199C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_650D198B9524A2EDCFE0210B9A181340"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -673,6 +637,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_02D2007B34D18F64214F84639BE8D490"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_02D2007B34D18F64214F84639BE8D490"
+                    {
+                    "Name" = "8:stdole.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:stdole.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_867868C640FB4B23913EA8544249D424"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0A703246583A46FA883C503EB5ED2FD7"
@@ -939,37 +934,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_36FC45675E20403E907439F91DD7AD8C"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MiniGeckoBrowser, Version=1.0.3142.33318, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_36FC45675E20403E907439F91DD7AD8C"
-                    {
-                    "Name" = "8:MiniGeckoBrowser.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MiniGeckoBrowser.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_867868C640FB4B23913EA8544249D424"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_384235E2AD3D40E4A34A6F66ADF4D075"
             {
             "SourcePath" = "8:..\\mRemoteV1\\Icons\\Terminal Server.ico"
@@ -1008,37 +972,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4DEBEFB5BAEB04AC5783A599F48534BC"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Skybound.Gecko, Version=1.8.1.4, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_4DEBEFB5BAEB04AC5783A599F48534BC"
-                    {
-                    "Name" = "8:Skybound.Gecko.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Skybound.Gecko.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_867868C640FB4B23913EA8544249D424"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_50A21BEE38814519ACF05A9BE9E04FE6"
@@ -1163,20 +1096,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_650D198B9524A2EDCFE0210B9A181340"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6DB5C299DB562226D2960F913C3820AB"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:Skybound.Gecko, Version=1.8.1.4, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_650D198B9524A2EDCFE0210B9A181340"
+                    "_6DB5C299DB562226D2960F913C3820AB"
                     {
-                    "Name" = "8:stdole.dll"
+                    "Name" = "8:Skybound.Gecko.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:stdole.dll"
+            "SourcePath" = "8:Skybound.Gecko.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_867868C640FB4B23913EA8544249D424"
@@ -1212,37 +1145,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7B639E76EEA976E60EAA471FE37B0C5F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Interop.WFICALib, Version=2.8.0.0, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_7B639E76EEA976E60EAA471FE37B0C5F"
-                    {
-                    "Name" = "8:Interop.WFICALib.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Interop.WFICALib.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_867868C640FB4B23913EA8544249D424"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CA067577CC140329CD40770C822F182"
@@ -1804,20 +1706,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DFB7B91882CFBC05EB0E1B621FD369AD"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DE87D7CDE9BFFF7F2A7C959B5A5017A7"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AxInterop.WFICALib, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:MiniGeckoBrowser, Version=1.0.3142.33318, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_DFB7B91882CFBC05EB0E1B621FD369AD"
+                    "_DE87D7CDE9BFFF7F2A7C959B5A5017A7"
                     {
-                    "Name" = "8:AxInterop.WFICALib.dll"
+                    "Name" = "8:MiniGeckoBrowser.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:AxInterop.WFICALib.dll"
+            "SourcePath" = "8:MiniGeckoBrowser.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_867868C640FB4B23913EA8544249D424"
@@ -2135,15 +2037,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:dRemote"
-        "ProductCode" = "8:{D9E6D4BB-7B17-428A-A167-634066B57B50}"
-        "PackageCode" = "8:{922AE90E-0D43-45A3-8F2B-6FFA98BCEF7A}"
+        "ProductCode" = "8:{D6B91E57-A5C3-4C4F-82D1-0392D7ABCD84}"
+        "PackageCode" = "8:{77C99E59-0D15-4426-9880-897A8E09CB4A}"
         "UpgradeCode" = "8:{D4A20E0A-A55A-4204-A1D9-F23840067024}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:0.4.0"
+        "ProductVersion" = "8:0.4.10"
         "Manufacturer" = "8:dRemote"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://www.dremote.nl"

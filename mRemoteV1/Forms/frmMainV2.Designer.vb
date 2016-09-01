@@ -42,7 +42,8 @@ Partial Class frmMainV2
         Me.mMenViewFullscreen = New System.Windows.Forms.ToolStripMenuItem()
         Me.btnAmout = New System.Windows.Forms.ToolStripMenuItem()
         Me.DockPanel1 = New WeifenLuo.WinFormsUI.Docking.DockPanel()
-        Me.VS2013BlueTheme2 = New WeifenLuo.WinFormsUI.Docking.VS2013BlueTheme()
+        Me.VS2013BlueTheme1 = New WeifenLuo.WinFormsUI.Docking.VS2013BlueTheme()
+        Me.DockPanel1.Theme = VS2013BlueTheme1
         Me.mainMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -51,7 +52,7 @@ Partial Class frmMainV2
         Me.mainMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolsToolStripMenuItem, Me.cMenLayout, Me.mMenToolsUpdate, Me.mMenToolsOptions, Me.cmenTabSep1, Me.mMenViewFullscreen, Me.btnAmout})
         Me.mainMenu.Name = "cmenTab"
         Me.mainMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.mainMenu.Size = New System.Drawing.Size(172, 164)
+        Me.mainMenu.Size = New System.Drawing.Size(172, 142)
         Me.mainMenu.Text = "File"
         '
         'ToolsToolStripMenuItem
@@ -59,7 +60,7 @@ Partial Class frmMainV2
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mMenToolsSSHTransfer, Me.mMenToolsUVNCSC, Me.mMenToolsExternalApps, Me.mMenToolsPortScan})
         Me.ToolsToolStripMenuItem.Image = Global.dRemote.My.Resources.Resources.Options
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.ToolsToolStripMenuItem.Text = "Tools"
         '
         'mMenToolsSSHTransfer
@@ -96,7 +97,7 @@ Partial Class frmMainV2
         Me.cMenLayout.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mMenViewResetLayout, Me.mMenViewConnections, Me.mMenViewConfig, Me.mMenViewQuickConnectToolbar, Me.mMenViewErrorsAndInfos})
         Me.cMenLayout.Image = Global.dRemote.My.Resources.Resources.Panels
         Me.cMenLayout.Name = "cMenLayout"
-        Me.cMenLayout.Size = New System.Drawing.Size(179, 22)
+        Me.cMenLayout.Size = New System.Drawing.Size(171, 22)
         Me.cMenLayout.Text = "Layout"
         '
         'mMenViewResetLayout
@@ -144,20 +145,20 @@ Partial Class frmMainV2
         '
         Me.mMenToolsUpdate.Image = Global.dRemote.My.Resources.Resources.Update
         Me.mMenToolsUpdate.Name = "mMenToolsUpdate"
-        Me.mMenToolsUpdate.Size = New System.Drawing.Size(179, 22)
+        Me.mMenToolsUpdate.Size = New System.Drawing.Size(171, 22)
         Me.mMenToolsUpdate.Text = "Check for Updates"
         '
         'mMenToolsOptions
         '
         Me.mMenToolsOptions.Image = Global.dRemote.My.Resources.Resources.Config
         Me.mMenToolsOptions.Name = "mMenToolsOptions"
-        Me.mMenToolsOptions.Size = New System.Drawing.Size(179, 22)
+        Me.mMenToolsOptions.Size = New System.Drawing.Size(171, 22)
         Me.mMenToolsOptions.Text = "Options"
         '
         'cmenTabSep1
         '
         Me.cmenTabSep1.Name = "cmenTabSep1"
-        Me.cmenTabSep1.Size = New System.Drawing.Size(176, 6)
+        Me.cmenTabSep1.Size = New System.Drawing.Size(168, 6)
         '
         'mMenViewFullscreen
         '
@@ -170,7 +171,7 @@ Partial Class frmMainV2
         '
         Me.btnAmout.Image = Global.dRemote.My.Resources.Resources.Help
         Me.btnAmout.Name = "btnAmout"
-        Me.btnAmout.Size = New System.Drawing.Size(179, 22)
+        Me.btnAmout.Size = New System.Drawing.Size(171, 22)
         Me.btnAmout.Text = "About"
         '
         'DockPanel1
@@ -199,9 +200,7 @@ Partial Class frmMainV2
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents VS2013BlueTheme1 As WeifenLuo.WinFormsUI.Docking.VS2013BlueTheme
     Friend WithEvents DockPanel1 As WeifenLuo.WinFormsUI.Docking.DockPanel
-    Friend WithEvents VS2013BlueTheme2 As WeifenLuo.WinFormsUI.Docking.VS2013BlueTheme
     Friend WithEvents mainMenu As ContextMenuStrip
     Friend WithEvents cmenTabSep1 As ToolStripSeparator
     Friend WithEvents btnAmout As ToolStripMenuItem
@@ -219,4 +218,5 @@ Partial Class frmMainV2
     Friend WithEvents mMenViewQuickConnectToolbar As ToolStripMenuItem
     Friend WithEvents mMenViewErrorsAndInfos As ToolStripMenuItem
     Friend WithEvents mMenViewFullscreen As ToolStripMenuItem
+    Friend WithEvents VS2013BlueTheme1 As WeifenLuo.WinFormsUI.Docking.VS2013BlueTheme
 End Class
