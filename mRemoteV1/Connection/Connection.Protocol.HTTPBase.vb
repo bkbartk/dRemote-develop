@@ -1,6 +1,8 @@
 ﻿Imports System.Windows.Forms
 Imports dRemote.App.Runtime
 Imports dRemote.Tools.LocalizedAttributes
+Imports CefSharp.WinForms
+Imports CefSharp
 
 Namespace Connection
     Namespace Protocol
@@ -15,15 +17,15 @@ Namespace Connection
 #End Region
 
 #Region "Public Methods"
-            Public Sub New(ByVal RenderingEngine As RenderingEngine)
+            Public Sub New(ByVal RenderingEngine As RenderingEngine, ByVal i As Connection.Info)
                 Try
-                    'If RenderingEngine = RenderingEngine.Gecko Then
-                    '    Me.Control = New MiniGeckoBrowser.MiniGeckoBrowser
-                    '    TryCast(Me.Control, MiniGeckoBrowser.MiniGeckoBrowser).XULrunnerPath = My.Settings.XULRunnerPath
-                    'Else
-                    '    Me.Control = New WebBrowser
-                    'End If
-                    Me.Control = New WebBrowser
+                    If RenderingEngine = RenderingEngine.Gecko Then
+                        Dim strHost As String = i.Hostname
+                        Me.Control = New ChromiumWebBrowser(strHost)
+                    Else
+                        Me.Control = New WebBrowser
+                    End If
+                    'Me.Control = New WebBrowser
 
                     NewExtended()
                 Catch ex As Exception
@@ -48,10 +50,12 @@ Namespace Connection
                     Me.wBrowser = Me.Control
 
                     If InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
-                        Dim objMiniGeckoBrowser As MiniGeckoBrowser.MiniGeckoBrowser = TryCast(wBrowser, MiniGeckoBrowser.MiniGeckoBrowser)
+                        Dim objMiniGeckoBrowser As ChromiumWebBrowser = TryCast(wBrowser, ChromiumWebBrowser)
+                        'wBrowser = New ChromiumWebBrowser("http://www.dremote.nl")
+
 
                         AddHandler objMiniGeckoBrowser.TitleChanged, AddressOf wBrowser_DocumentTitleChanged
-                        AddHandler objMiniGeckoBrowser.LastTabRemoved, AddressOf wBrowser_LastTabRemoved
+                        'AddHandler objMiniGeckoBrowser.LastTabRemoved, AddressOf wBrowser_LastTabRemoved
                     Else
                         Dim objWebBrowser As WebBrowser = TryCast(wBrowser, WebBrowser)
                         Dim objAxWebBrowser As SHDocVw.WebBrowser = DirectCast(objWebBrowser.ActiveXInstance, SHDocVw.WebBrowser)
@@ -89,7 +93,7 @@ Namespace Connection
                         End If
 
                         If InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
-                            TryCast(wBrowser, MiniGeckoBrowser.MiniGeckoBrowser).Navigate(strHost & ":" & Me.InterfaceControl.Info.Port)
+                            TryCast(wBrowser, ChromiumWebBrowser).Load(strHost & ":" & Me.InterfaceControl.Info.Port)
                         Else
                             TryCast(wBrowser, WebBrowser).Navigate(strHost & ":" & Me.InterfaceControl.Info.Port, Nothing, Nothing, strAuth)
                         End If
@@ -99,7 +103,7 @@ Namespace Connection
                         End If
 
                         If InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
-                            TryCast(wBrowser, MiniGeckoBrowser.MiniGeckoBrowser).Navigate(strHost)
+                            TryCast(wBrowser, ChromiumWebBrowser).Load(strHost)
                         Else
                             TryCast(wBrowser, WebBrowser).Navigate(strHost, Nothing, Nothing, strAuth)
                         End If
@@ -150,10 +154,10 @@ Namespace Connection
                         Dim shortTitle As String = ""
 
                         If Me.InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
-                            If TryCast(wBrowser, MiniGeckoBrowser.MiniGeckoBrowser).Title.Length >= 30 Then
-                                shortTitle = TryCast(wBrowser, MiniGeckoBrowser.MiniGeckoBrowser).Title.Substring(0, 29) & " ..."
+                            If TryCast(wBrowser, ChromiumWebBrowser).Name.Length >= 30 Then
+                                shortTitle = TryCast(wBrowser, ChromiumWebBrowser).Name.Substring(0, 29) & " ..."
                             Else
-                                shortTitle = TryCast(wBrowser, MiniGeckoBrowser.MiniGeckoBrowser).Title
+                                shortTitle = TryCast(wBrowser, ChromiumWebBrowser).Name
                             End If
                         Else
                             If TryCast(wBrowser, WebBrowser).DocumentTitle.Length >= 30 Then

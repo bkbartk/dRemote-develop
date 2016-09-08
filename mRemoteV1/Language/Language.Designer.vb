@@ -6760,8 +6760,16 @@ Namespace My
                 Return ResourceManager.GetString("strWeifenLuoAttributionURL", resourceCulture)
             End Get
         End Property
-
-
+        
+        '''<summary>
+        '''  Looks up a localized string similar to XULrunner path:.
+        '''</summary>
+        Friend Shared ReadOnly Property strXULrunnerPath() As String
+            Get
+                Return ResourceManager.GetString("strXULrunnerPath", resourceCulture)
+            End Get
+        End Property
+        
         '''<summary>
         '''  Looks up a localized string similar to Yes.
         '''</summary>

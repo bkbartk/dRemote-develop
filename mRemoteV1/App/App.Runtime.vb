@@ -1468,9 +1468,9 @@ Namespace App
                 Case Protocol.Protocols.RAW
                     newProtocol = New Protocol.RAW
                 Case Protocol.Protocols.HTTP
-                    newProtocol = New Protocol.HTTP(newConnectionInfo.RenderingEngine)
+                    newProtocol = New Protocol.HTTP(newConnectionInfo.RenderingEngine, newConnectionInfo)
                 Case Protocol.Protocols.HTTPS
-                    newProtocol = New Protocol.HTTPS(newConnectionInfo.RenderingEngine)
+                    newProtocol = New Protocol.HTTPS(newConnectionInfo.RenderingEngine, newConnectionInfo)
                 Case Protocol.Protocols.ICA
                     newProtocol = New Protocol.ICA
                 Case Protocol.Protocols.IntApp
@@ -1917,9 +1917,9 @@ Namespace App
                     Case Protocol.Protocols.RAW
                         newProtocol = New Protocol.RAW
                     Case Protocol.Protocols.HTTP
-                        newProtocol = New Protocol.HTTP(newConnectionInfo.RenderingEngine)
+                        newProtocol = New Protocol.HTTP(newConnectionInfo.RenderingEngine, newConnectionInfo)
                     Case Protocol.Protocols.HTTPS
-                        newProtocol = New Protocol.HTTPS(newConnectionInfo.RenderingEngine)
+                        newProtocol = New Protocol.HTTPS(newConnectionInfo.RenderingEngine, newConnectionInfo)
                     Case Protocol.Protocols.ICA
                         newProtocol = New Protocol.ICA
                     Case Protocol.Protocols.IntApp

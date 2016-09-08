@@ -3,8 +3,8 @@ Namespace Connection
         Public Class HTTP
             Inherits Connection.Protocol.HTTPBase
 
-            Public Sub New(ByVal RenderingEngine As RenderingEngine)
-                MyBase.New(RenderingEngine)
+            Public Sub New(ByVal RenderingEngine As RenderingEngine, ByVal i As Connection.Info)
+                MyBase.New(RenderingEngine, i)
             End Sub
 
             Public Overrides Sub NewExtended()
