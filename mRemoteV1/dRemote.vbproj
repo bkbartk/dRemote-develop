@@ -27,6 +27,8 @@
     <SignManifests>false</SignManifests>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>D:\dremote\publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -44,8 +46,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -181,15 +181,6 @@
     <Reference Include="AxMSTSCLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>References\AxMSTSCLib.dll</HintPath>
-    </Reference>
-    <Reference Include="CefSharp">
-      <HintPath>References\CefSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="CefSharp.Core">
-      <HintPath>References\CefSharp.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="CefSharp.WinForms">
-      <HintPath>References\CefSharp.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="FilteredPropertyGrid, Version=1.0.2258.31541, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -660,56 +651,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.ExportForm.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsForm.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsPages.AdvancedPage.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsPages.AppearancePage.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsPages.ConnectionsPage.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsPages.KeyboardPage.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsPages.SqlServerPage.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsPages.StartupExitPage.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsPages.TabsPanelsPage.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsPages.ThemePage.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.OptionsPages.UpdatesPage.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Forms.PasswordForm.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.frmChoosePanel.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.frmMain.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.de.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.el.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.en-US.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.es-AR.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.es.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.fr.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.hu.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.it.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.nb-NO.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.nl.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.pl.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.pt-BR.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.pt.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.ru.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.uk.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.zh-CN.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Language.zh-TW.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.ReconnectGroup.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.Resources.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.About.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.ActiveDirectoryImport.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.Announcement.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.ComponentsCheck.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.Config.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.Connection.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.ErrorsAndInfos.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.ExternalTools.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.Help.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.PortScan.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.ScreenshotManager.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.Sessions.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.SSHTransfer.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.Tree.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.UltraVNCSC.resources" />
-    <EmbeddedResource Include="obj\Debug Portable\mRemoteNG.UI.Window.Update.resources" />
     <EmbeddedResource Include="Tools\ReconnectGroup.resx">
       <DependentUpon>ReconnectGroup.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -792,26 +733,6 @@
     <Content Include="Icons\dRemote.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="obj\Debug Portable\de\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\el\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\en-US\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\es-AR\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\es\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\fr\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\hu\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\Interop.SHDocVw.dll" />
-    <Content Include="obj\Debug Portable\it\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\mRemoteNG.exe" />
-    <Content Include="obj\Debug Portable\mRemoteNG.pdb" />
-    <Content Include="obj\Debug Portable\nb-NO\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\nl\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\pl\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\pt-BR\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\pt\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\ru\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\uk\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\zh-CN\mRemoteNG.resources.dll" />
-    <Content Include="obj\Debug Portable\zh-TW\mRemoteNG.resources.dll" />
     <Content Include="References\ADTree.dll" />
     <Content Include="References\AxInterop.WFICALib.dll" />
     <Content Include="References\AxMSTSCLib.dll" />
@@ -842,15 +763,6 @@
     <Content Include="Resources\Images_FamFamFam\database.png" />
     <Content Include="Resources\Images_FamFamFam\Link.png" />
     <Content Include="Resources\Images_FamFamFam\page_copy.png" />
-    <None Include="obj\Debug Portable\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\Debug Portable\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug Portable\mRemoteNG.application" />
-    <None Include="obj\Debug Portable\mRemoteNG.exe.manifest">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="obj\Debug Portable\mRemoteV1.vbproj.GenerateResource.Cache" />
-    <None Include="obj\Debug Portable\mRemoteV1.vbproj.ResolveComReference.cache" />
-    <None Include="obj\Debug Portable\mRemoteV1.vbprojResolveAssemblyReference.cache" />
     <None Include="Resources\Images\puttycm.png" />
     <None Include="Resources\Images_FamFamFam\monitor_go.png" />
     <None Include="Resources\Images_FamFamFam\monitor_delete.png" />
@@ -1169,7 +1081,7 @@
   <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="My Project\DataSources\" />
-    <Folder Include="obj\Debug Portable\TempPE\" />
+    <Folder Include="obj\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ActiveButtons.Net-master\Source\ActiveButtons.csproj">
@@ -1187,7 +1099,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"D:\dRemote-develop\postformbuild.bat"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

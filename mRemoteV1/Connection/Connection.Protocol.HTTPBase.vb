@@ -1,8 +1,7 @@
-﻿Imports System.Windows.Forms
-Imports dRemote.App.Runtime
+﻿Imports dRemote.App.Runtime
 Imports dRemote.Tools.LocalizedAttributes
-Imports CefSharp.WinForms
-Imports CefSharp
+'Imports CefSharp.WinForms
+'Imports CefSharp
 
 Namespace Connection
     Namespace Protocol
@@ -19,12 +18,12 @@ Namespace Connection
 #Region "Public Methods"
             Public Sub New(ByVal RenderingEngine As RenderingEngine, ByVal i As Connection.Info)
                 Try
-                    If RenderingEngine = RenderingEngine.Gecko Then
-                        Dim strHost As String = i.Hostname
-                        Me.Control = New ChromiumWebBrowser(strHost)
-                    Else
-                        Me.Control = New WebBrowser
-                    End If
+                    'If RenderingEngine = RenderingEngine.Gecko Then
+                    '    Dim strHost As String = i.Hostname
+                    '    Me.Control = New ChromiumWebBrowser(strHost)
+                    'Else
+                    Me.Control = New WebBrowser
+                    'End If
                     'Me.Control = New WebBrowser
 
                     NewExtended()
@@ -49,15 +48,15 @@ Namespace Connection
                 Try
                     Me.wBrowser = Me.Control
 
-                    If InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
-                        Dim objMiniGeckoBrowser As ChromiumWebBrowser = TryCast(wBrowser, ChromiumWebBrowser)
-                        'wBrowser = New ChromiumWebBrowser("http://www.dremote.nl")
+                    'If InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
+                    '    Dim objMiniGeckoBrowser As ChromiumWebBrowser = TryCast(wBrowser, ChromiumWebBrowser)
+                    '    'wBrowser = New ChromiumWebBrowser("http://www.dremote.nl")
 
 
-                        AddHandler objMiniGeckoBrowser.TitleChanged, AddressOf wBrowser_DocumentTitleChanged
-                        'AddHandler objMiniGeckoBrowser.LastTabRemoved, AddressOf wBrowser_LastTabRemoved
-                    Else
-                        Dim objWebBrowser As WebBrowser = TryCast(wBrowser, WebBrowser)
+                    '    AddHandler objMiniGeckoBrowser.TitleChanged, AddressOf wBrowser_DocumentTitleChanged
+                    '    'AddHandler objMiniGeckoBrowser.LastTabRemoved, AddressOf wBrowser_LastTabRemoved
+                    'Else
+                    Dim objWebBrowser As WebBrowser = TryCast(wBrowser, WebBrowser)
                         Dim objAxWebBrowser As SHDocVw.WebBrowser = DirectCast(objWebBrowser.ActiveXInstance, SHDocVw.WebBrowser)
 
                         objWebBrowser.ScrollBarsEnabled = True
@@ -65,7 +64,7 @@ Namespace Connection
                         AddHandler objWebBrowser.Navigated, AddressOf wBrowser_Navigated
                         AddHandler objWebBrowser.DocumentTitleChanged, AddressOf wBrowser_DocumentTitleChanged
                         AddHandler objAxWebBrowser.NewWindow3, AddressOf wBrowser_NewWindow3
-                    End If
+                    'End If
 
                     Return True
                 Catch ex As Exception
@@ -92,21 +91,21 @@ Namespace Connection
                             strHost = httpOrS & "://" & strHost
                         End If
 
-                        If InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
-                            TryCast(wBrowser, ChromiumWebBrowser).Load(strHost & ":" & Me.InterfaceControl.Info.Port)
-                        Else
-                            TryCast(wBrowser, WebBrowser).Navigate(strHost & ":" & Me.InterfaceControl.Info.Port, Nothing, Nothing, strAuth)
-                        End If
+                        'If InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
+                        '    TryCast(wBrowser, ChromiumWebBrowser).Load(strHost & ":" & Me.InterfaceControl.Info.Port)
+                        'Else
+                        TryCast(wBrowser, WebBrowser).Navigate(strHost & ":" & Me.InterfaceControl.Info.Port, Nothing, Nothing, strAuth)
+                        'End If
                     Else
                         If strHost.Contains(httpOrS & "://") = False Then
                             strHost = httpOrS & "://" & strHost
                         End If
 
-                        If InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
-                            TryCast(wBrowser, ChromiumWebBrowser).Load(strHost)
-                        Else
-                            TryCast(wBrowser, WebBrowser).Navigate(strHost, Nothing, Nothing, strAuth)
-                        End If
+                        'If InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
+                        '    TryCast(wBrowser, ChromiumWebBrowser).Load(strHost)
+                        'Else
+                        TryCast(wBrowser, WebBrowser).Navigate(strHost, Nothing, Nothing, strAuth)
+                        'End If
                     End If
 
                     MyBase.Connect()
@@ -153,19 +152,19 @@ Namespace Connection
                     If tabP IsNot Nothing Then
                         Dim shortTitle As String = ""
 
-                        If Me.InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
-                            If TryCast(wBrowser, ChromiumWebBrowser).Name.Length >= 30 Then
-                                shortTitle = TryCast(wBrowser, ChromiumWebBrowser).Name.Substring(0, 29) & " ..."
-                            Else
-                                shortTitle = TryCast(wBrowser, ChromiumWebBrowser).Name
-                            End If
-                        Else
-                            If TryCast(wBrowser, WebBrowser).DocumentTitle.Length >= 30 Then
+                        'If Me.InterfaceControl.Info.RenderingEngine = RenderingEngine.Gecko Then
+                        '    If TryCast(wBrowser, ChromiumWebBrowser).Name.Length >= 30 Then
+                        '        shortTitle = TryCast(wBrowser, ChromiumWebBrowser).Name.Substring(0, 29) & " ..."
+                        '    Else
+                        '        shortTitle = TryCast(wBrowser, ChromiumWebBrowser).Name
+                        '    End If
+                        'Else
+                        If TryCast(wBrowser, WebBrowser).DocumentTitle.Length >= 30 Then
                                 shortTitle = TryCast(wBrowser, WebBrowser).DocumentTitle.Substring(0, 29) & " ..."
                             Else
                                 shortTitle = TryCast(wBrowser, WebBrowser).DocumentTitle
                             End If
-                        End If
+                        'End If
 
                         If Me.tabTitle <> "" Then
                             tabP.Title = tabTitle & " - " & shortTitle
